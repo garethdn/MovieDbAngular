@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="col-sm-12">
+		<div class="alert alert-danger" ng-show="error">
+			<p ng-show="errorCode"><strong>{{errorCode}}</strong> - Login failed. Please check your credentials and try again</p>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-6">
+		<form>
+			<div class="form-group">
+				<label for="username">Username:</label>
+				<input type="text" class="form-control" name="username" ng-required ng-model="user.username">
+			</div>
+			
+			<div class="form-group">
+				<label for="password">Password:</label>
+				<input type="password" class="form-control" name="password" ng-required ng-model="user.password">
+			</div>
+
+			<button class="btn btn-primary btn-lg pull-right" ng-click="login()">Login</button>
+		</form>
+	</div>
+
+	<div class="col-sm-6">
+		<h1>The Movie DB App</h1>
+		<p>Explore a little. Search for your favorite movie. Build a list of movies you want to watch. We're really proud of the service we've built and hope you find it as useful as we do.</p>
+	</div>
+</div>

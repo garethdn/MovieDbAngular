@@ -1,0 +1,4 @@
+movie-list-item .movie-overview {
+	max-height: 120px;
+	overflow:hidden;
+}

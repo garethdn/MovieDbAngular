@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+  <meta charset="utf-8">
+  <title>Movie DB App</title>
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="_styles/app.css">
+  <link rel="stylesheet" href="_styles/loading.css">
+  <link rel="stylesheet" href="movie/movie.css">
+
+  <style type="text/css">
+    [ng-cloak] {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header header-fixed" ng-controller="AppHeaderController">
+    <section class="navbar navbar-default">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" ng-cloak>
+            <ul class="nav navbar-nav">
+              <li class="dropdown" ng-show="user.id">
+                <a href="#" class="dropdown-toggle">
+                  My Movies <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#/movies/popular">Favorites</a></li>
+                  <li><a href="#/movies/top_rated">Rated</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle">
+                  Movies <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#/movies/popular">Popular</a></li>
+                  <li><a href="#/movies/top_rated">Top Rated</a></li>
+                  <li><a href="#/movies/upcoming">Upcoming</a></li>
+                  <li><a href="#/movies/now_playing">Now playing</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle">
+                  Genres <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#/movies/popular">Action</a></li>
+                  <li><a href="#/movies/top_rated">Comedy</a></li>
+                  <li><a href="#/movies/upcoming">Sci-Fi</a></li>
+                  <li><a href="#/movies/now_playing">Drama</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+              <li ng-hide="user.id"><a ng-click="openLoginModal()">Login</a></li>
+              <li class="dropdown" ng-show="user.id">
+                <a href="#" class="dropdown-toggle">
+                  {{user.name}} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a ng-click="logout()">Logout</a></li>
+                  <li><a href="#/account">Account</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+  <div class="container">
+    <div ng-view></div>
+  </div>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/underscore/underscore-min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+  <script src="bower_components/holderjs/holder.js"></script>
+  <script src="app.js"></script>
+  <script src="authentication/authentication.js"></script>
+  <script src="app_header/app_header.js"></script>
+  <script src="account/account.js"></script>
+  <script src="user_movies/user_movies.js"></script>
+  <script src="movies/movies.js"></script>
+  <script src="movie/movie.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</body>
+
+</html>

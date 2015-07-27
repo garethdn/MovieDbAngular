@@ -1,0 +1,73 @@
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+  cursor: pointer;
+}
+
+.text-upper {
+  text-transform: uppercase;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.popularity-icon {
+  font-size:30px;
+}
+
+.movie-poster {
+  background-color: #000;
+  position: relative;
+}
+
+.movie-poster .trailer-overlay {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0px;
+  left:0px;
+  text-align: center;
+  padding-top: 50%;
+}
+
+.trailer-play-icon {
+  cursor: pointer;
+  font-size: 80px;
+  color: red;
+  border: 7px solid white;
+  padding: 20px;
+  border-radius: 67px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.movie-poster:hover .trailer-overlay {
+  display: block;
+}
+
+.movie-poster img {
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+.movie-poster:hover img {
+  opacity: 0.5;
+}
+
+.movie-metadata li {
+  margin-bottom: 5px;
+}
+
+.movie-metadata .list-key {
+  font-weight: bold;
+}
+
+.movie-actions {
+  font-size: 40px;
+  margin-top: 10px;
+}
+
+.is-favorite {
+  color:red;
+}

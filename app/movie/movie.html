@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-sm-12" ng-class="{loading: loading}" style="min-height: 500px">
+    <h1 class="page-header">{{movie.title}} 
+      <em class="small">({{movie.release_date | date:'yyyy'}})</em>
+      <span ng-show="movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:orange"></span>
+    </h1>
+    <div class="media">
+      <div class="pull-left">
+        <div class="movie-poster">
+          <img class="media-object" width="300" ng-src="http://image.tmdb.org/t/p/w300/{{movie.poster_path}}" alt="{{movie.title}}">
+          <div class="trailer-overlay">
+            <span class="glyphicon glyphicon-play trailer-play-icon"></span>
+          </div>  
+        </div>
+        <div class="row">
+          <div class="col-sm-12" style="margin-top:5px;">
+            <button ng-hide="movie.isFavorite" ng-click="toggleFavorite()" class="btn btn-block btn-lg btn-success">Add to Favorites</button>
+            <button ng-show="movie.isFavorite" ng-click="toggleFavorite()" class="btn btn-block btn-lg btn-warning">Remove from Favorites</button>
+
+            <button ng-hide="movie.isInWatchList" ng-click="toggleWatchList()" class="btn btn-block btn-lg btn-success">Add to Watchlist</button>
+            <button ng-show="movie.isInWatchList" ng-click="toggleWatchList()" class="btn btn-block btn-lg btn-warning">Remove from Watchlist</button>
+            
+            <a target="_blank" ng-href="http://www.imdb.com/title/{{movie.imdb_id}}" class="btn btn-block btn-lg btn-primary">More info</a>
+          </div>
+        </div>
+  
+      </div>
+      <div class="media-body">
+        <span ng-show="movie.directors.length" class="text-upper text-bold text-muted">Directed by <span ng-repeat="director in movie.directors"><a ng-href="#/people/{{director.id}}">{{director.name}}</a>{{$last ? '' : ', '}}</span> &nbsp;|&nbsp; </span> 
+        <span ng-show="movie.writers.length" class="text-upper text-bold text-muted">Written by <span ng-repeat="writer in movie.writers"><a ng-href="#/people/{{writer.id}}">{{writer.name}}</a>{{$last ? '' : ', '}}</span></span>
+        <h4>
+          <a ng-href="#/genres/{{genre.id}}" ng-repeat="genre in movie.genres">
+            <span class="label label-primary">{{genre.name}}</span>
+          </a>
+        </h4>
+        <hr>
+        <ul class="list-unstyled movie-metadata">
+          <li><span class="list-key">Average rating</span>: {{movie.vote_average}} ({{movie.vote_count}} votes)</li>
+          <li ng-show="movie.release_date"><span class="list-key">Release date</span>: {{movie.release_date|date}}</li>
+          <li ng-show="movie.runtime"><span class="list-key">Runtime</span>: {{movie.runtime}} minutes</li>
+          <li ng-show="movie.production_companies.length">
+            <span class="list-key">Production companies</span>
+            : <span ng-repeat="company in movie.production_companies">{{company.name}}{{$last ? '' : ', '}}</span>
+          </li>
+          <li ng-show="movie.production_countries.length">
+            <span class="list-key">Filming locations</span>
+            : <span ng-repeat="country in movie.production_countries">{{country.name}}{{$last ? '' : ', '}}</span>
+          </li>
+          <li ng-show="movie.popularity"><span class="list-key">Popularity</span>: {{movie.popularity | number:2}}</li>
+          <li ng-show="movie.budget"><span class="list-key">Budget</span>: {{movie.budget|currency}}</li>
+          <li ng-show="movie.revenue"><span class="list-key">Revenue</span>: {{movie.revenue|currency}}</li>
+        </ul>
+
+        <hr>
+        <h4>Summary</h4>
+        <p style="font-size:16px;">{{movie.overview}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h2 class="page-header">Cast</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4 col-xs-6 col-md-3" style="margin-bottom:30px;" ng-repeat="actor in movie.credits.cast">
+    <div class="media">
+      <div class="pull-left">
+        <a ng-href="#/people/{{actor.id}}">
+          <img ng-show="actor.profile_path" class="media-object" width="92" height="138" ng-src="http://image.tmdb.org/t/p/w92/{{actor.profile_path}}" alt="{{actor.name}}">
+          <img ng-hide="actor.profile_path" src="holder.js/92x138/social/text:No \n Image" img-holder>
+        </a>
+      </div>
+      <div class="media-body">
+        <a ng-href="#/people/{{actor.id}}"><p class="h4" style="margin:0 0 5px 0">{{actor.name}}</p></a>
+        <p ng-show="actor.character" class="small text-muted">{{actor.character}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
