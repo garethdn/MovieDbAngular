@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-12" ng-class="{loading: loading}" style="min-height: 500px">
+  <div class="col-sm-12">
   	<div class="row">
   		<div class="col-sm-12">
   			<div class="page-header">
@@ -7,7 +7,8 @@
 			</div>
   		</div>
   	</div>
-    <div class="row">
+    <div class="row" style="min-height: 500px; position: relative;">
+      <div class="col-sm-12 loading" ng-show="loading"></div>
       <div class="col-sm-6" ng-repeat="movie in movies" style="margin-bottom:20px;">
         <movie-list-item></movie-list-item>
       </div>

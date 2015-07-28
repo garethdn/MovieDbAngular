@@ -1,5 +1,6 @@
 .loading {
-    position: relative;
+    position: absolute;
+    height: 100%;
 }
 
 .loading::before {
