@@ -1,22 +1,24 @@
-<div class="row">
-  <div class="col-sm-12">
-  	<div class="row">
-  		<div class="col-sm-12">
-  			<div class="page-header">
-  				<h1>{{type}} movies</h1>
-			</div>
-  		</div>
-  	</div>
-    <div class="row" style="min-height: 500px; position: relative;">
-      <div class="col-sm-12 loading" ng-show="loading"></div>
-      <div class="col-sm-6" ng-repeat="movie in movies" style="margin-bottom:20px;">
-        <movie-list-item></movie-list-item>
-      </div>
-    </div>
-    <div class="row">
-    	<div class="col-sm-12 text-right">
-    		<pagination boundary-links="true" items-per-page="itemsPerPage" ng-change="pageChanged()" total-items="totalItems" max-size="maxSize" ng-model="currentPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+    	<div class="row">
+    		<div class="col-sm-12">
+    			<div class="page-header">
+    				<h1>{{type}} movies</h1>
+  			</div>
+    		</div>
     	</div>
+      <div class="row" style="min-height: 500px; position: relative;">
+        <div class="col-sm-12 loading" ng-show="loading"></div>
+        <div class="col-sm-6" ng-repeat="movie in movies" style="margin-bottom:20px;">
+          <movie-list-item></movie-list-item>
+        </div>
+      </div>
+      <div class="row">
+      	<div class="col-sm-12 text-right">
+      		<pagination boundary-links="true" items-per-page="itemsPerPage" ng-change="pageChanged()" total-items="totalItems" max-size="maxSize" ng-model="currentPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+      	</div>
+      </div>
     </div>
   </div>
 </div>

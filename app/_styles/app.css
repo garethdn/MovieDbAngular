@@ -4,6 +4,10 @@
   cursor: pointer;
 }
 
+header .navbar {
+  margin-bottom: 0;
+}
+
 .text-upper {
   text-transform: uppercase;
 }
