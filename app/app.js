@@ -4,7 +4,8 @@ var app = angular.module('app', [
   'app.login',
   'app.header',
   'app.account',
-  'app.movies'
+  'app.movies',
+  'app.movie_genre'
   ]);
 
 // Setup the routes for the app
@@ -25,6 +26,10 @@ app.config(['$routeProvider', function($routeProvider) {
     .when('/movies/:type', {
       templateUrl : 'movies/movies.html',
       controller  : 'MoviesController'
+    })
+    .when('/movies/genre/:id', {
+      templateUrl : 'movies/movies.html',
+      controller  : 'MovieGenreController'
     })
     .when('/movie/:id', {
       templateUrl : 'movie/movie.html',

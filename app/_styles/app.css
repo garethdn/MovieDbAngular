@@ -42,6 +42,14 @@ header .navbar {
   font-weight: bold;
 }
 
+.text-lg {
+  font-size: 1.2em;
+}
+
+.text-xl {
+  font-size: 1.4em;
+}
+
 .popularity-icon {
   font-size:30px;
 }

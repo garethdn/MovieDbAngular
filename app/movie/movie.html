@@ -8,6 +8,7 @@
         <em class="small">({{movie.release_date | date:'yyyy'}})</em>
         <span ng-show="movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:orange"></span>
       </h1>
+
       <div class="media">
         <div class="pull-left">
           <div class="movie-poster">
@@ -27,8 +28,8 @@
           </div>
         </div>
         <div class="media-body" style="padding-left:10px;">
-          <span ng-show="movie.directors.length" class="text-upper text-bold text-muted">Directed by <span ng-repeat="director in movie.directors"><a ng-href="#/people/{{director.id}}">{{director.name}}</a>{{$last ? '' : ', '}}</span> &nbsp;|&nbsp; </span>
-          <span ng-show="movie.writers.length" class="text-upper text-bold text-muted">Written by <span ng-repeat="writer in movie.writers"><a ng-href="#/people/{{writer.id}}">{{writer.name}}</a>{{$last ? '' : ', '}}</span></span>
+          <span ng-show="movie.directors.length" class="text-upper text-bold text-muted text-xl">Directed by <span ng-repeat="director in movie.directors"><a ng-href="#/people/{{director.id}}">{{director.name}}</a>{{$last ? '' : ', '}}</span> &nbsp;|&nbsp; </span>
+          <span ng-show="movie.writers.length" class="text-upper text-bold text-muted text-xl">Written by <span ng-repeat="writer in movie.writers"><a ng-href="#/people/{{writer.id}}">{{writer.name}}</a>{{$last ? '' : ', '}}</span></span>
           <h4>
             <a ng-href="#/genres/{{genre.id}}" ng-repeat="genre in movie.genres">
               <span class="label label-primary">{{genre.name}}</span>
@@ -50,6 +51,7 @@
             <li ng-show="movie.revenue"><span class="list-key">Revenue</span>: {{movie.revenue|currency}}</li>
           </ul>
           <hr>
+          <p class="text-upper text-bold text-muted text-xl">{{movie.tagline}}</p>
           <em>{{movie.overview}}</em>
         </div>
       </div>
@@ -71,7 +73,7 @@
         </div>
         <div class="media-body">
           <a ng-href="#/people/{{actor.id}}">
-            <p class="h4" style="margin:0 0 5px 0">{{actor.name}}</p>
+            <p class="h4" style="margin:0 0 5px 0; word-break: break-word;">{{actor.name}}</p>
           </a>
           <p ng-show="actor.character" class="small text-muted">{{actor.character}}</p>
         </div>
