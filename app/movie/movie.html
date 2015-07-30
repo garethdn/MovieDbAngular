@@ -13,7 +13,7 @@
           <div class="movie-poster">
             <img class="media-object" width="300" ng-src="http://image.tmdb.org/t/p/w300/{{movie.poster_path}}" alt="{{movie.title}}">
             <div class="trailer-overlay">
-              <span class="glyphicon glyphicon-play trailer-play-icon"></span>
+              <span class="glyphicon glyphicon-play trailer-play-icon" ng-click="playTrailer()"></span>
             </div>
           </div>
           <div class="row">

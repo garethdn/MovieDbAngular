@@ -1,8 +1,8 @@
 var movie = angular.module('app.movie', ['app.userMovies']);
 
 movie.controller('MovieController', 
-  ['$scope', '$routeParams', 'moviesService', 'authService', 'userMoviesService',
-  function($scope, $routeParams, moviesService, authService, userMoviesService){
+  ['$scope', '$routeParams', 'moviesService', 'authService', 'userMoviesService', '$modal', '$sce',
+  function($scope, $routeParams, moviesService, authService, userMoviesService, $modal, $sce){
 
   // Any time the value of `isLoggedIn` changes, we refetch the user
   $scope.$watch(authService.isLoggedIn, function(newVal, oldVal){
@@ -58,6 +58,15 @@ movie.controller('MovieController',
 
   var isInWatchList = function(){
     return _.contains(_.pluck($scope.watchList, 'id'), $scope.movie.id);
+  };
+
+  $scope.playTrailer = function(){
+    $scope.trailerUrl = $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + $scope.movie.trailers.youtube[0].source);
+
+    $modal.open({
+      templateUrl: 'trailer/trailer.html',
+      scope: $scope
+    });
   };
 
   $scope.toggleFavorite = function(){
