@@ -4,8 +4,34 @@
   cursor: pointer;
 }
 
+body {
+  background-color: #222;
+  color: #eee;
+}
+
+h1 small,
+h1 .small,
+h2 small,
+h2 .small,
+h3 small,
+h3 .small,
+h4 small,
+h4 .small,
+h5 small,
+h5 .small,
+h6 small,
+h6 .small,
+.text-muted {
+  color: #ccc;
+}
+
 header .navbar {
   margin-bottom: 0;
+  border-radius: 0 !important;
+}
+
+.modal-content {
+  background-color: #222;
 }
 
 .text-upper {

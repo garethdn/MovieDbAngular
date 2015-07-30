@@ -37,15 +37,16 @@ userMovies.factory('userMoviesService', ['$http', '$q', 'authService', function(
 
     $http({
         method: 'POST',
-        url: apiStub + '/account/' + authService.user.id + '/favorite',
-        data: $.param({ 
-          'api_key'   : apiKey,
+        url: apiStub + '/account/' + authService.user.id + '/favorite?api_key=' + apiKey + '&session_id=' + authService.getSessionId(),
+        data: {
           'media_type': 'movie',
           'media_id'  : options.mediaId,
-          'favorite'  : options.favorite,
-          'session_id': authService.getSessionId()
-        }),
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+          'favorite'  : options.favorite
+        },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept'      : 'application/json'
+        }
     }).
     success(function(data, status, headers, config) {
       deferred.resolve(data);
