@@ -16,3 +16,4 @@ An interface for the Movie DB built with Angular.
 * Link to trailer
 * Add logic for non-authenticated users attempting actions that require authentication
 * Investigate dark themes and maybe angular material
+* ~~Add toggle watchlist functionality~~

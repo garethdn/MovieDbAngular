@@ -4,6 +4,7 @@ movie.controller('MovieController',
   ['$scope', '$routeParams', 'moviesService', 'authService', 'userMoviesService',
   function($scope, $routeParams, moviesService, authService, userMoviesService){
 
+  // Any time the value of `isLoggedIn` changes, we refetch the user
   $scope.$watch(authService.isLoggedIn, function(newVal, oldVal){
     if (newVal === oldVal) return;
     getUser();
@@ -15,9 +16,11 @@ movie.controller('MovieController',
     getUser()
       .then(getMovie($routeParams))
       .then(getFavorites)
+      .then(getWatchList)
       .finally(function(){
         $scope.loading = false;
         $scope.movie.isFavorite = isFavorite();
+        $scope.movie.isInWatchList = isInWatchList();
       });
   };
 
@@ -35,6 +38,13 @@ movie.controller('MovieController',
       });
   };
 
+  var getWatchList = function(){
+    return userMoviesService.getWatchList()
+      .then(function(response){
+        $scope.watchList = response;
+      });
+  };
+
   var getUser = function(){
     return authService.getUser()
       .then(function(response){
@@ -44,6 +54,10 @@ movie.controller('MovieController',
 
   var isFavorite = function(){
     return _.contains(_.pluck($scope.favorites, 'id'), $scope.movie.id);
+  };
+
+  var isInWatchList = function(){
+    return _.contains(_.pluck($scope.watchList, 'id'), $scope.movie.id);
   };
 
   $scope.toggleFavorite = function(){
@@ -56,6 +70,19 @@ movie.controller('MovieController',
     return userMoviesService.toggleFavorite(options)
       .then(function(response){
         $scope.movie.isFavorite = !$scope.movie.isFavorite;
+      });
+  };
+
+  $scope.toggleWatchList = function(){
+    var options = {
+      watchList : !$scope.movie.isInWatchList,
+      userId    : $scope.user.id,
+      mediaId   : $scope.movie.id
+    };
+
+    return userMoviesService.toggleWatchList(options)
+      .then(function(response){
+        $scope.movie.isInWatchList = !$scope.movie.isInWatchList;
       });
   };
 

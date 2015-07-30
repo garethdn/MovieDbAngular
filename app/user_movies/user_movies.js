@@ -27,6 +27,28 @@ userMovies.factory('userMoviesService', ['$http', '$q', 'authService', function(
     return deferred.promise;
   };
 
+  factory.getWatchList = function(options){
+    var deferred = $q.defer();
+
+    if ( !authService.isLoggedIn() ) {
+      deferred.reject([]);
+      return deferred.promise;
+    }
+
+    $http.get(apiStub + '/account/' + authService.user.id + '/watchlist/movies', { params: { 
+      'api_key'   : apiKey,
+      'session_id': authService.getSessionId()
+    }}).
+    success(function(data, status, headers, config) {
+      deferred.resolve(data.results);
+    }).
+    error(function(data, status, headers, config) {
+      deferred.reject(data);
+    });
+
+    return deferred.promise;
+  };
+
   factory.toggleFavorite = function(options){
     var deferred = $q.defer();
 
@@ -42,6 +64,37 @@ userMovies.factory('userMoviesService', ['$http', '$q', 'authService', function(
           'media_type': 'movie',
           'media_id'  : options.mediaId,
           'favorite'  : options.favorite
+        },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept'      : 'application/json'
+        }
+    }).
+    success(function(data, status, headers, config) {
+      deferred.resolve(data);
+    }).
+    error(function(data, status, headers, config) {
+      deferred.reject(data);
+    });
+
+    return deferred.promise;
+  };
+
+  factory.toggleWatchList = function(options){
+    var deferred = $q.defer();
+
+    if ( !authService.isLoggedIn ) {
+      deferred.reject({ Message: 'Not logged in' });
+      return deferred.promise;
+    }
+
+    $http({
+        method: 'POST',
+        url: apiStub + '/account/' + authService.user.id + '/watchlist?api_key=' + apiKey + '&session_id=' + authService.getSessionId(),
+        data: {
+          'media_type': 'movie',
+          'media_id'  : options.mediaId,
+          'watchlist' : options.watchList
         },
         headers: {
           'Content-Type': 'application/json',
