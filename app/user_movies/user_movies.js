@@ -2,6 +2,7 @@ var userMovies = angular.module('app.userMovies', []);
 
 userMovies.factory('userMoviesService', ['$http', '$q', 'authService', function($http, $q, authService){
   var factory = {},
+    // move these to some other settings file and store as constants
     apiStub   = 'http://api.themoviedb.org/3',
     apiKey    = '05fa93373002b486f99f4b5b15197746';
 
@@ -18,7 +19,7 @@ userMovies.factory('userMoviesService', ['$http', '$q', 'authService', function(
       'session_id': authService.getSessionId()
     }}).
     success(function(data, status, headers, config) {
-      deferred.resolve(data.results);
+      deferred.resolve(data);
     }).
     error(function(data, status, headers, config) {
       deferred.reject(data);
@@ -40,7 +41,29 @@ userMovies.factory('userMoviesService', ['$http', '$q', 'authService', function(
       'session_id': authService.getSessionId()
     }}).
     success(function(data, status, headers, config) {
-      deferred.resolve(data.results);
+      deferred.resolve(data);
+    }).
+    error(function(data, status, headers, config) {
+      deferred.reject(data);
+    });
+
+    return deferred.promise;
+  };
+
+  factory.getRatedMovies = function(options){
+    var deferred = $q.defer();
+
+    if ( !authService.isLoggedIn() ) {
+      deferred.reject([]);
+      return deferred.promise;
+    }
+
+    $http.get(apiStub + '/account/' + authService.user.id + '/rated/movies', { params: { 
+      'api_key'   : apiKey,
+      'session_id': authService.getSessionId()
+    }}).
+    success(function(data, status, headers, config) {
+      deferred.resolve(data);
     }).
     error(function(data, status, headers, config) {
       deferred.reject(data);

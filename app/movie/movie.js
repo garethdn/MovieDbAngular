@@ -34,14 +34,14 @@ movie.controller('MovieController',
   var getFavorites = function(){
     return userMoviesService.getFavorites()
       .then(function(response){
-        $scope.favorites = response;
+        $scope.favorites = response.results;
       });
   };
 
   var getWatchList = function(){
     return userMoviesService.getWatchList()
       .then(function(response){
-        $scope.watchList = response;
+        $scope.watchList = response.results;
       });
   };
 
