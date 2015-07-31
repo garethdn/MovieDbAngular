@@ -284,6 +284,23 @@ movies.factory('moviesService', ['$http', '$q', '$cookies','authService', functi
     return deferred.promise;
   };
 
+  factory.search = function(query){
+    var deferred = $q.defer();
+
+    $http.get(apiStub + '/search/multi', { params: { 
+      'api_key' : apiKey,
+      'query'   : query
+    }}).
+    success(function(data, status, headers, config) {
+      deferred.resolve(data);
+    }).
+    error(function(data, status, headers, config) {
+      deferred.reject(data);
+    });
+
+    return deferred.promise;
+  };
+
   return factory;
 
 }]);

@@ -22,16 +22,22 @@
     <section class="navbar navbar-inverse">
       <div class="container">
         <div class="row">
-          <div class="col-md-12" ng-cloak>
+          <div class="col-md-9">
+            <a class="brand navbar-brand" href="#/movies" style="padding: 10px 15px;">
+              <img width="117" height="30" src="https://docs.angularjs.org/img/angularjs-for-header-only.svg">
+            </a>
             <ul class="nav navbar-nav">
-              <li class="dropdown" ng-show="user.id">
+              <li ng-hide="user.id" ng-cloak><a ng-click="openLoginModal()">Login</a></li>
+              <li class="dropdown" ng-show="user.id" ng-cloak>
                 <a href="#" class="dropdown-toggle">
-                  My Movies <span class="caret"></span>
+                  {{user.name}} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="#/movies/favorites">My Favorites</a></li>
                   <li><a href="#/movies/watchlist">My Watchlist</a></li>
                   <li><a href="#/movies/rated">Movies I've Rated</a></li>
+                  <li><a href="#/account">Account</a></li>
+                  <li><a ng-click="logout()">Logout</a></li>
                 </ul>
               </li>
               <li class="dropdown">
@@ -73,19 +79,15 @@
                 </ul>
               </li>
             </ul>
-            <ul class="nav navbar-nav pull-right">
-              <li ng-hide="user.id"><a ng-click="openLoginModal()">Login</a></li>
-              <li class="dropdown" ng-show="user.id">
-                <a href="#" class="dropdown-toggle">
-                  {{user.name}} <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a ng-click="logout()">Logout</a></li>
-                  <li><a href="#/account">Account</a></li>
-                </ul>
-              </li>
-            </ul>
           </div>
+          <form class="navbar-search col-md-3" ng-submit="searchMovie()" style="padding: 10px 15px;">
+            <div class="input-group">
+              <input type="text" class="form-control input-sm" ng-model="query" placeholder="Search for a movie or person...">
+              <span class="input-group-btn">
+                <button class="btn btn-primary btn-sm" ng-click="searchMovie()" type="button">Go!</button>
+              </span>
+            </div>
+          </form>
         </div>
       </div>
     </section>

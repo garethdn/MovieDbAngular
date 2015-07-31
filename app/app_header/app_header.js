@@ -1,6 +1,6 @@
 var appHeader = angular.module('app.header', ['ngRoute']);
 
-login.controller('AppHeaderController', ['$scope', '$modal', 'authService', function($scope, $modal, authService) {
+login.controller('AppHeaderController', ['$scope', '$modal', 'authService', 'moviesService', function($scope, $modal, authService, moviesService) {
 
   $scope.user = {};
 
@@ -18,6 +18,13 @@ login.controller('AppHeaderController', ['$scope', '$modal', 'authService', func
       templateUrl: 'app_header/login_modal.html',
       controller: 'LoginModalController'
     });
+  };
+
+  $scope.searchMovie = function(){
+    return moviesService.search($scope.query)
+      .then(function(response){
+        $scope.searchResults = response;
+      });
   };
 
   var getUser = function(){

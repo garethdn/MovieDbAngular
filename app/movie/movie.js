@@ -60,8 +60,12 @@ movie.controller('MovieController',
     return _.contains(_.pluck($scope.watchList, 'id'), $scope.movie.id);
   };
 
+  $scope.getTrailer = function(){
+    return $scope.movie && $scope.movie.trailers.youtube.length ? $scope.movie.trailers.youtube[0].source : '';
+  };
+
   $scope.playTrailer = function(){
-    $scope.trailerUrl = $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + $scope.movie.trailers.youtube[0].source);
+    $scope.trailerUrl = $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + $scope.getTrailer());
 
     $modal.open({
       templateUrl: 'trailer/trailer.html',

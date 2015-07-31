@@ -27,3 +27,5 @@ An interface for the Movie DB built with Angular.
 - [ ] Add instructions to get the app up and running
 - [ ] Add "you might also enjoy..." section to each movie with similar titles
 - [ ] Add search functionality
+- [ ] Add pagination to top of pages
+- [ ] Animate scroll to top on change of page

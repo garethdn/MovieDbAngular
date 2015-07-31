@@ -13,7 +13,7 @@
         <div class="pull-left">
           <div class="movie-poster">
             <img class="media-object" width="300" ng-src="http://image.tmdb.org/t/p/w300/{{movie.poster_path}}" alt="{{movie.title}}">
-            <div class="trailer-overlay">
+            <div class="trailer-overlay" ng-show="getTrailer()">
               <span class="glyphicon glyphicon-play trailer-play-icon" ng-click="playTrailer()"></span>
             </div>
           </div>
@@ -31,7 +31,7 @@
           <span ng-show="movie.directors.length" class="text-upper text-bold text-muted text-xl">Directed by <span ng-repeat="director in movie.directors"><a ng-href="#/people/{{director.id}}">{{director.name}}</a>{{$last ? '' : ', '}}</span> &nbsp;|&nbsp; </span>
           <span ng-show="movie.writers.length" class="text-upper text-bold text-muted text-xl">Written by <span ng-repeat="writer in movie.writers"><a ng-href="#/people/{{writer.id}}">{{writer.name}}</a>{{$last ? '' : ', '}}</span></span>
           <h4>
-            <a ng-href="#/genres/{{genre.id}}" ng-repeat="genre in movie.genres">
+            <a ng-href="#/movies/genre/{{genre.id}}" ng-repeat="genre in movie.genres">
               <span class="label label-primary">{{genre.name}}</span>
             </a>
           </h4>
