@@ -11,7 +11,7 @@ An interface for the Movie DB built with Angular.
 [ ] Remove bower and use NPM only
 [x] Investigate problem with removing a movie from 'Favorites'
 [ ] Link to 'Person' page (Actor / Director / Writer)
-[x] Filter by Genre[
+[x] Filter by Genre
 [ ] Change trailer icon style
 [x] Link to trailer
 [ ] Add logic for non-authenticated users attempting actions that require authentication
