@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="_styles/app.css">
   <link rel="stylesheet" href="_styles/loading.css">
   <link rel="stylesheet" href="movie/movie.css">
+  <link rel="stylesheet" href="autocomplete/result_item.css">
 
   <style type="text/css">
     [ng-cloak] {
@@ -80,11 +81,11 @@
               </li>
             </ul>
           </div>
-          <form class="navbar-search col-md-3" ng-submit="searchMovie()" style="padding: 10px 15px;">
+          <form class="navbar-search col-md-3" style="padding: 10px 15px;">
             <div class="input-group">
-              <input type="text" class="form-control input-sm" ng-model="query" placeholder="Search for a movie or person...">
+              <input type="text" class="form-control input-sm" ng-model="query" placeholder="Search for a movie or person..." typeahead="result.displayName for result in multiSearch($viewValue)" typeahead-wait-ms="400" typeahead-min-length="2" typeahead-template-url="autocomplete/result_item.html" typeahead-on-select="onSelectResult($item, $model, $label)">
               <span class="input-group-btn">
-                <button class="btn btn-primary btn-sm" ng-click="searchMovie()" type="button">Go!</button>
+                <button class="btn btn-primary btn-sm" type="button">Go!</button>
               </span>
             </div>
           </form>

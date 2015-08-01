@@ -67,8 +67,10 @@
       <div class="media">
         <div class="pull-left">
           <a ng-href="#/people/{{actor.id}}">
-            <img ng-show="actor.profile_path" class="media-object" width="92" height="138" ng-src="http://image.tmdb.org/t/p/w92/{{actor.profile_path}}" alt="{{actor.name}}">
-            <img ng-hide="actor.profile_path" src="holder.js/92x138/social/text:No \n Image" img-holder>
+            <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested
+            regardless of whether the img tag is hidden or not -->
+            <img ng-if="actor.profile_path" class="media-object" width="92" height="138" ng-src="http://image.tmdb.org/t/p/w92/{{actor.profile_path}}" alt="{{actor.name}}">
+            <img ng-hide="actor.profile_path" data-src="holder.js/92x138/industrial/text:No \n Image" img-holder>
           </a>
         </div>
         <div class="media-body">

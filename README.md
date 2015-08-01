@@ -31,3 +31,5 @@ An interface for the Movie DB built with Angular.
 - [ ] Animate scroll to top on change of page
 - [ ] Create unit test
 - [ ] Create e2e tests
+- [ ] Persist pagination through the URL
+- [ ] Empty search results template
