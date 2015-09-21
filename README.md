@@ -33,7 +33,8 @@ An interface for the Movie DB built with Angular.
 - [ ] Create e2e tests
 - [ ] Persist pagination through the URL
 - [ ] Empty search results template
-- [ ] Fallback for no backdrop_path for a movie
-- [ ] Fallback for no poster_path for a movie
+- [x] Fallback for no backdrop_path for a movie
+- [x] Fallback for no poster_path for a movie
 - [ ] Use Browserify or Webpack 
 - [ ] Conform as strictly as possible to [John Papa Angular Styleguide](https://github.com/johnpapa/angular-styleguide)
+- [ ] The current placeholder image generator is handy...but ugly - try something different

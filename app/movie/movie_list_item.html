@@ -1,6 +1,7 @@
 <div class="media">
   <a class="pull-left" ng-href="#/movie/{{movie.id}}">
-    <img class="media-object" height="195" width="130" ng-src="http://image.tmdb.org/t/p/w130/{{movie.poster_path}}" alt="{{movie.title}}">
+    <img ng-if="movie.poster_path" class="media-object" height="195" width="130" ng-src="http://image.tmdb.org/t/p/w130/{{movie.poster_path}}" alt="{{movie.title}}">
+    <img ng-hide="movie.poster_path" data-src="holder.js/130x195/industrial/text:No \n Image" img-holder>
   </a>
   <div class="media-body">
     <h4 class="media-heading"><a ng-href="#/movie/{{movie.id}}">{{movie.title}}</a></h4>
