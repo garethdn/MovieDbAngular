@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
-  "private": true,
+  "name": "MovieDbAngular",
+  "private": false,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "description": "An AngularJS interface for The MovieDB",
+  "repository": "https://github.com/garethdn/MovieDbAngular",
   "license": "MIT",
   "devDependencies": {
     "karma": "~0.10",

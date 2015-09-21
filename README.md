@@ -26,10 +26,14 @@ An interface for the Movie DB built with Angular.
 - [ ] Use Less or Sass
 - [ ] Add instructions to get the app up and running
 - [ ] Add "you might also enjoy..." section to each movie with similar titles
-- [ ] Add search functionality
-- [ ] Add pagination to top of pages
+- [x] Add search functionality
+- [x] Add pagination to top of pages
 - [ ] Animate scroll to top on change of page
-- [ ] Create unit test
+- [ ] Create unit tests
 - [ ] Create e2e tests
 - [ ] Persist pagination through the URL
 - [ ] Empty search results template
+- [ ] Fallback for no backdrop_path for a movie
+- [ ] Fallback for no poster_path for a movie
+- [ ] Use Browserify or Webpack 
+- [ ] Conform as strictly as possible to [John Papa Angular Styleguide](https://github.com/johnpapa/angular-styleguide)

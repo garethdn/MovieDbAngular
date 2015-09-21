@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="movie/movie.css">
   <link rel="stylesheet" href="autocomplete/result_item.css">
 
+  <link rel="icon" href="https://angularjs.org/favicon.ico" type="image/x-icon">
+
   <style type="text/css">
     [ng-cloak] {
       display: none !important;
@@ -82,12 +84,7 @@
             </ul>
           </div>
           <form class="navbar-search col-md-3" style="padding: 10px 15px;">
-            <div class="input-group">
               <input type="text" class="form-control input-sm" ng-model="query" placeholder="Search for a movie or person..." typeahead="result.displayName for result in multiSearch($viewValue)" typeahead-wait-ms="400" typeahead-min-length="2" typeahead-template-url="autocomplete/result_item.html" typeahead-on-select="onSelectResult($item, $model, $label)">
-              <span class="input-group-btn">
-                <button class="btn btn-primary btn-sm" type="button">Go!</button>
-              </span>
-            </div>
           </form>
         </div>
       </div>
