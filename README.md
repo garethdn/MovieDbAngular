@@ -2,6 +2,8 @@
 
 An interface for the Movie DB built with Angular.
 
+![Screenshots from the App](https://raw.githubusercontent.com/garethdn/MovieDbAngular/master/screenshots/collage.jpg)
+
 ## Objectives
 
 * Build an interface to The Movie DB with Angular 1.x
