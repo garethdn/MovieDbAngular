@@ -2,7 +2,8 @@
 
 An interface for the Movie DB built with Angular.
 
-![Screenshots from the App](https://raw.githubusercontent.com/garethdn/MovieDbAngular/master/screenshots/collage.jpg)
+![The Martian Screenshot](https://raw.githubusercontent.com/garethdn/MovieDbAngular/master/screenshots/movie.png)
+![Watchlist Screenshot](https://raw.githubusercontent.com/garethdn/MovieDbAngular/master/screenshots/watchlist.png)
 
 ## Objectives
 
