@@ -44,7 +44,8 @@
       })
       .when('/movie/:id', {
         templateUrl : 'movie/movie.html',
-        controller  : 'MovieController'
+        controller  : 'MovieController',
+        controllerAs: 'movieCtrl'
       })
       .otherwise({redirectTo: '/login'});
   };
