@@ -41,3 +41,4 @@ An interface for the Movie DB built with Angular.
 - [ ] Use Browserify or Webpack 
 - [ ] Conform as strictly as possible to [John Papa Angular Styleguide](https://github.com/johnpapa/angular-styleguide)
 - [ ] The current placeholder image generator is handy...but ugly - try something different
+- [ ] Add close button to trailer modal

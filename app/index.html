@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Movie DB App</title>
+
   <link rel="stylesheet" href="../bower_components/html5-boilerplate/css/normalize.css">
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="_styles/app.css">
@@ -93,6 +94,7 @@
 
   <div ng-view style="position:relative"></div>
 
+  <!-- vendor libs -->
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
@@ -103,14 +105,24 @@
   <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
   <script src="../bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
   <script src="../bower_components/holderjs/holder.js"></script>
+  <!-- end -->
 
-  <script src="app.js"></script>
+  <!-- widgets -->
+  <script src="widgets/app.widgets.module.js"></script>
+  <script src="widgets/app.widgets.imgHolder.js"></script>
+  <!-- end -->
+
+  <!-- app scripts -->
+  <script src="app.module.js"></script>
+  <script src="app.config.js"></script>
+  <script src="app.constants.js"></script>
   <script src="authentication/authentication.js"></script>
   <script src="app_header/app_header.js"></script>
   <script src="account/account.js"></script>
   <script src="user_movies/user_movies.js"></script>
   <script src="movies/movies.js"></script>
   <script src="movie/movie.js"></script>
+  <!-- end -->
 </body>
 
 </html>

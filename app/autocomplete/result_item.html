@@ -7,7 +7,7 @@
 
 	      <img class="media-object" ng-if="match.model.media_type === 'person' && match.model.profile_path" ng-src="http://image.tmdb.org/t/p/w92/{{match.model.profile_path}}" width="60">
 
-	      <img ng-hide="match.model.profile_path || match.model.poster_path" data-src="holder.js/60x90/industrial/text:No \n Image" img-holder>
+	      <img ng-hide="match.model.profile_path || match.model.poster_path" mdb-image-holder="holder.js/60x90/industrial/text:No \n Image">
 	  </div>
 	  <div class="media-body">
 	    <h4 class="media-heading" style="color:#222; font-size:1em" bind-html-unsafe="match.label | typeaheadHighlight:query"></h4>
