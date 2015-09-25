@@ -4,11 +4,12 @@
   // John Papa [Style Y170] Startup logic
   angular
     .module('app', [
+      'components',
+      'ngRoute',
       'ui.bootstrap',
-      'app.widgets',
-      'app.login',
+      // 'app.login',
       'app.header',
-      'app.account',
+      // 'app.account',
       'app.movies'
     ]);
 

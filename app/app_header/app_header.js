@@ -20,30 +20,6 @@ login.controller('AppHeaderController', ['$scope', '$modal', 'authService', 'mov
     });
   };
 
-  $scope.multiSearch = function(){
-    return moviesService.search($scope.query)
-      .then(function(response){
-        _.each(response.results, function(result){
-          if (result.media_type === "movie") {
-            result.displayName = result.title;
-            result.mediaLink = 'movie/' + result.id;
-          } else if (result.media_type === "tv") {
-            result.displayName = result.name;
-            result.mediaLink = 'tv/' + result.id;
-          } else {
-            result.displayName = result.name;
-            result.mediaLink = 'person/' + result.id;
-          }
-        }, this);
-
-        return _.first(response.results, 10);
-      });
-  };
-
-  $scope.onSelectResult = function($item, $model, $label){
-    $scope.query = '';
-  };
-
   var getUser = function(){
     return authService.getUser()
       .then(function(response){

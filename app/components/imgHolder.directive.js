@@ -3,7 +3,7 @@
 	'use strict';
 
 	angular
-		.module('app.widgets')
+		.module('components')
 		// John Papa [Style Y073] Unique directive prefix mdb (movieDb)
 		.directive('mdbImageHolder', imageHolder);
 
@@ -17,8 +17,6 @@
 		}
 
 		function link(scope, element, attrs) {
-			$log.log(element);
-
 			attrs.$set('data-src', attrs.mdbImageHolder);
 			
 			Holder.run({ 
