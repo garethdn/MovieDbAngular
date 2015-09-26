@@ -10,6 +10,7 @@
       // 'app.login',
       'app.header',
       // 'app.account',
+      'app.movie',
       'app.movies'
     ]);
 

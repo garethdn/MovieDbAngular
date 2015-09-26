@@ -7,9 +7,5 @@
     <h4 class="media-heading"><a ng-href="#/movie/{{movie.id}}">{{movie.title}}</a></h4>
     <p class="movie-overview">{{movie.overview}}</p>
     <p><strong>Average rating</strong>: {{movie.vote_average}}</p>
-    <p ng-show="movie.budget > 0"><strong>Budget</strong>: {{movie.budget|currency}}</p>
-    <p ng-show="movie.revenue"><strong>Revenue</strong>: {{movie.revenue|currency}}</p>
-
-    <a ng-href="#/genres/{{genre.id}}" ng-repeat="genre in movie.genres"><span class="label label-primary">{{genre.name}}</span></a>
   </div>
 </div>

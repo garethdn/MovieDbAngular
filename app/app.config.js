@@ -36,11 +36,13 @@
       })
       .when('/movies/:type', {
         templateUrl : 'movies/movies.html',
-        controller  : 'MoviesController'
+        controller  : 'MoviesController',
+        controllerAs: 'moviesCtrl'
       })
       .when('/movies/genre/:id', {
         templateUrl : 'movies/movies.html',
-        controller  : 'MovieGenreController'
+        controller  : 'MovieGenresController',
+        controllerAs: 'moviesCtrl'
       })
       .when('/movie/:id', {
         templateUrl : 'movie/movie.html',

@@ -11,14 +11,16 @@
 		var vm = this;
 
 		vm.loading 	= true;
-		vm.movie 	= {};
+		vm.movie 		= {};
 
 		// John Papa [Style Y080] Resolve start-up logic for a controller in an `activate` function.
 		activate();
 
 		function activate() {
 			return moviesService.getMovie($routeParams).then(function(response){
-				vm.movie 		= response;
+				console.log('Success', response);
+
+				vm.movie 		= response.data;
 				vm.loading 	= false;
 
 				return vm.movie;

@@ -5,13 +5,13 @@
 		.module('app.header')
 		.controller('AppHeaderController', AppHeaderController);
 
-	AppHeaderController.$inject = ['$scope', '$modal', 'authService', 'moviesService', 'movieGenres'];
+	AppHeaderController.$inject = ['$scope', '$modal', 'moviesService', 'MOVIE_GENRES'];
 
-	function AppHeaderController($scope, $modal, authService, moviesService, movieGenres) {
+	function AppHeaderController($scope, $modal, moviesService, MOVIE_GENRES) {
 		var vm = this;
 
-		vm.movieGenres 	= movieGenres;
-		vm.logout 			= authService.logout;
+		vm.movieGenres 	= MOVIE_GENRES;
+		// vm.logout 			= authService.logout;
 	}
 
 })();

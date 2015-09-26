@@ -5,7 +5,7 @@
   angular
     .module('app')
     .constant('Holder', Holder)
-    .constant('movieGenres', [
+    .constant('MOVIE_GENRES', [
       {
         label : "Action",
         id    : 28
@@ -86,6 +86,14 @@
         label : "Western",
         id    : 37
       }
-    ]);
+    ])
+    .constant('API_SETTINGS', {
+      key   : '05fa93373002b486f99f4b5b15197746',
+      url   : 'http://api.themoviedb.org/3'
+    })
+    .constant('PAGINATION_SETTINGS', {
+      itemsPerPage  : 20,
+      maxSize       : 5
+    });
 
 })();

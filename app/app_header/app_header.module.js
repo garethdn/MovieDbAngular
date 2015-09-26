@@ -3,6 +3,6 @@
 
   angular
     // TODO: need to change the app.login thing
-    .module('app.header', ['app.login']);
+    .module('app.header', []);
 
 })();
