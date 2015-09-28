@@ -5,6 +5,7 @@
   angular
     .module('app')
     .constant('Holder', Holder)
+    // TODO: move this to app.movies constants??
     .constant('MOVIE_GENRES', [
       {
         label : "Action",

@@ -5,37 +5,31 @@
     .module('app.movies')
     .controller('MovieGenresController', MovieGenresController);
 
-  MovieGenresController.$inject = ['moviesService', '$routeParams', 'PAGINATION_SETTINGS'];
+  MovieGenresController.$inject = ['moviesService', '$routeParams', 'PAGINATION_SETTINGS', 'MOVIE_GENRES'];
 
-  function MovieGenresController(moviesService, $routeParams, PAGINATION_SETTINGS) {
+  function MovieGenresController(moviesService, $routeParams, PAGINATION_SETTINGS, MOVIE_GENRES) {
     var vm = this;
 
-    vm.loading      = true;
-    vm.movies       = [];
-    vm.pageHeader   = '';
-    vm.getMovies    = getMoviesByGenre
-    vm.pagination   = {
-      itemsPerPage  : PAGINATION_SETTINGS.itemsPerPage,
-      maxSize       : PAGINATION_SETTINGS.maxSize,
-      totalItems    : 0,
-      currentPage   : 1
-    };
+    vm.genre        = _.result(_.findWhere(MOVIE_GENRES, { id: parseInt($routeParams.id, 10) }), 'label');
+    vm.pageHeader   = vm.genre + ' movies';
+    vm.getMovies    = getMovies;
+
+    moviesService.getViewModelDefaults.apply(vm, [PAGINATION_SETTINGS]);
 
     activate();
+    ///////////////
 
     function activate() {
-      getMoviesByGenre();
+      getMovies();
     }
 
-    function getMoviesByGenre() {
+    function getMovies() {
+      var ms = moviesService;
+
       vm.loading = true;
 
       return moviesService.getMoviesByGenre($routeParams.id, vm.pagination.currentPage).then(function(response){
-        vm.loading      = false;
-        vm.movies       = response.data.results;
-
-        vm.pagination.totalItems   = response.data.total_results;
-        vm.pagination.currentPage  = response.data.page;
+        ms.updateViewModel.apply(vm, [response]);
 
         return vm;
       });

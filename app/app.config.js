@@ -20,7 +20,8 @@
       })
       .when('/movies', {
         templateUrl : 'movies/movies.html',
-        controller  : 'MoviesController'
+        controller  : 'MoviesController',
+        controllerAs: 'moviesCtrl'
       })
       .when('/movies/favorites', {
         templateUrl : 'movies/movies.html',
