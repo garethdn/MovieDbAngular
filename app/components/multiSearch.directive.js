@@ -15,10 +15,10 @@
         controller      : MultiSearchController,
         controllerAs    : 'search',
         bindToController: true
-      }
+      };
 
       function link(scope, element, attrs) {
-        console.log('In the search directve link function');
+        // console.log('In the search directve link function');
       }
 
       MultiSearchController.$inject = ['moviesService'];
@@ -47,7 +47,7 @@
                 }
               }, this);
 
-              return _.first(response.data.results, 10);
+              return _.take(response.data.results, 10);
             });
         }
 
@@ -58,6 +58,6 @@
       }
 
       return directive;
-    };  
+    }
 
   })();

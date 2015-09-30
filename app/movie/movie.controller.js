@@ -18,8 +18,6 @@
 
 		function activate() {
 			return moviesService.getMovie($routeParams).then(function(response){
-				console.log('Success', response);
-
 				vm.movie 		= response.data;
 				vm.loading 	= false;
 

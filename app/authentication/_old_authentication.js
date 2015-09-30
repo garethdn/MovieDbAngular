@@ -103,12 +103,14 @@ login.factory('authService', ['$http', '$q', '$cookies', function($http, $q, $co
 
     // if there is a user id, return the user
     if (factory.user.id && $cookies.sessionId) {
+      console.log('User is logged in!');
       deferred.resolve(factory.user);
       return deferred.promise;
     }
 
     // if there is no session id, return nothing
     if (!$cookies.sessionId) {
+      console.log('No session id, user not logged in.');
       factory.user = {};
       deferred.resolve(factory.user);
       return deferred.promise;

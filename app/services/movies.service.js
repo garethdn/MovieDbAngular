@@ -38,7 +38,7 @@
       function onError(error) {
         return error;
       }
-    };
+    }
 
     function getMovies(type, page) {
       var url = API_SETTINGS.url + '/movie/' + (type || 'popular');

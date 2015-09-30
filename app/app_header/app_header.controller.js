@@ -11,7 +11,6 @@
 		var vm = this;
 
 		vm.movieGenres 	= MOVIE_GENRES;
-		// vm.logout 			= authService.logout;
 	}
 
 })();

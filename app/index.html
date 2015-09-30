@@ -22,63 +22,65 @@
 </head>
 
 <body>
-  <header class="header header-fixed" ng-controller="AppHeaderController as header">
-    <section class="navbar navbar-inverse">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-9">
-            <a class="brand navbar-brand" href="#/movies" style="padding: 10px 15px;">
-              <img width="117" height="30" src="https://docs.angularjs.org/img/angularjs-for-header-only.svg">
-            </a>
-            <ul class="nav navbar-nav">
-              <li ng-hide="user.id" ng-cloak><a ng-click="openLoginModal()">Login</a></li>
-              <!-- User movies menu -->
-              <li class="dropdown" ng-show="user.id" ng-cloak>
-                <a href="#" class="dropdown-toggle">
-                  {{user.name}} <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="#/movies/favorites">My Favorites</a></li>
-                  <li><a href="#/movies/watchlist">My Watchlist</a></li>
-                  <li><a href="#/movies/rated">Movies I've Rated</a></li>
-                  <li><a href="#/account">Account</a></li>
-                  <li><a ng-click="logout()">Logout</a></li>
-                </ul>
-              </li>
-              <!-- Movies menu -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle">
-                  Movies <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="#/movies/popular">Popular</a></li>
-                  <li><a href="#/movies/top_rated">Top Rated</a></li>
-                  <li><a href="#/movies/upcoming">Upcoming</a></li>
-                  <li><a href="#/movies/now_playing">Now playing</a></li>
-                </ul>
-              </li>
-              <!-- Genres menu -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle">
-                  Genres <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li ng-repeat="genre in header.movieGenres | orderBy:'label'">
-                    <a href="#movies/genre/{{genre.id}}">{{genre.label}}</a>                  
-                  </li>
-                </ul>
-              </li>
-            </ul>
+  <div ng-controller="AppController as app">
+    <header class="header header-fixed" ng-controller="AppHeaderController as header">
+      <section class="navbar navbar-inverse">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9">
+              <a class="brand navbar-brand" href="#/movies" style="padding: 10px 15px;">
+                <img width="117" height="30" src="https://docs.angularjs.org/img/angularjs-for-header-only.svg">
+              </a>
+              <ul class="nav navbar-nav">
+                <li ng-hide="app.user.id" ng-cloak><a ng-click="app.openLoginModal()">Login</a></li>
+                <!-- User movies menu -->
+                <li class="dropdown" ng-show="app.user.id" ng-cloak>
+                  <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                    {{app.user.name}} <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#/movies/favorites">My Favorites</a></li>
+                    <li><a href="#/movies/watchlist">My Watchlist</a></li>
+                    <li><a href="#/movies/rated">Movies I've Rated</a></li>
+                    <li><a href="#/account">Account</a></li>
+                    <li><a ng-click="app.logout()">Logout</a></li>
+                  </ul>
+                </li>
+                <!-- Movies menu -->
+                <li class="dropdown">
+                  <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Movies <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#/movies/popular">Popular</a></li>
+                    <li><a href="#/movies/top_rated">Top Rated</a></li>
+                    <li><a href="#/movies/upcoming">Upcoming</a></li>
+                    <li><a href="#/movies/now_playing">Now playing</a></li>
+                  </ul>
+                </li>
+                <!-- Genres menu -->
+                <li class="dropdown" >
+                  <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Genres <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li ng-repeat="genre in header.movieGenres | orderBy:'label'">
+                      <a href="#movies/genre/{{genre.id}}">{{genre.label}}</a>                  
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <form class="navbar-search col-md-3" style="padding: 10px 15px;">
+
+              <input mdb-multi-search type="text" class="form-control input-sm" ng-model="search.query" placeholder="Search for a movie or person..." typeahead="result.displayName for result in search.multiSearch($viewValue)" typeahead-wait-ms="400" typeahead-min-length="2" typeahead-template-url="components/multiSearch.directive.html" typeahead-on-select="search.onSelectResult($item, $model, $label)">
+
+            </form>
           </div>
-          <form class="navbar-search col-md-3" style="padding: 10px 15px;">
-
-            <input mdb-multi-search type="text" class="form-control input-sm" ng-model="search.query" placeholder="Search for a movie or person..." typeahead="result.displayName for result in search.multiSearch($viewValue)" typeahead-wait-ms="400" typeahead-min-length="2" typeahead-template-url="components/multiSearch.directive.html" typeahead-on-select="search.onSelectResult($item, $model, $label)">
-
-          </form>
         </div>
-      </div>
-    </section>
-  </header>
+      </section>
+    </header>
+  </div>
 
   <div ng-view style="position:relative"></div>
 
@@ -104,21 +106,32 @@
 
   <!-- app scripts -->
   <script src="app.module.js"></script>
+  <script src="app.run.js"></script>
   <script src="app.config.js"></script>
   <script src="app.constants.js"></script>
+  <script src="app.controller.js"></script>
+  <!-- end -->
+
+  <!-- authentication -->
+  <script src="authentication/authentication.module.js"></script>
+  <script src="authentication/authentication.service.js"></script>
+  <script src="authentication/authentication.controller.js"></script>
+  <!-- end -->
 
   <!-- app header -->
   <script src="app_header/app_header.module.js"></script>
   <script src="app_header/app_header.controller.js"></script>
   <!-- end -->
 
-
+  <!-- movie collections -->
   <script src="movies/movies.module.js"></script>
   <script src="movies/movies.constants.js"></script>
   <script src="movies/movies.controller.js"></script>
   <script src="movies/movieGenres.controller.js"></script>
   <script src="services/movies.service.js"></script>
+  <!-- end -->
 
+  <!-- single movie -->
   <script src="movie/movie.module.js"></script>
   <script src="movie/movie.controller.js"></script>
   <script src="movie/movieListItem.directive.js"></script>

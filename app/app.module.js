@@ -4,10 +4,14 @@
   // John Papa [Style Y170] Startup logic
   angular
     .module('app', [
-      'components',
+      // angular modules
       'ngRoute',
+      'ngCookies',
+      // 3rd party modules
       'ui.bootstrap',
-      // 'app.login',
+      // app modules
+      'components',
+      'app.authentication',
       'app.header',
       // 'app.account',
       'app.movie',
