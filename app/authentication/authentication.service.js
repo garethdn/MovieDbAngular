@@ -80,7 +80,7 @@
 
     function logout() {
       console.info('Auth Service -> Logging out...');
-      // TODO: logout thru API also
+      // The API doesn't appear to have any way to logout so simply deleting the session if here and the cached user
       $cookies.remove('sessionId');
       factory.user = {};
     }
