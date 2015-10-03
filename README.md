@@ -34,7 +34,7 @@ An interface for the Movie DB built with Angular.
 - [ ] Animate scroll to top on change of page
 - [ ] Create unit tests
 - [ ] Create e2e tests
-- [ ] Persist pagination through the URL
+- [x] Persist pagination through the URL
 - [ ] Empty search results template
 - [x] Fallback for no backdrop_path for a movie
 - [x] Fallback for no poster_path for a movie
