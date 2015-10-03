@@ -1,5 +1,7 @@
 # Movie DB Angular App
 
+[![Code Climate](https://codeclimate.com/github/garethdn/MovieDbAngular/badges/gpa.svg)](https://codeclimate.com/github/garethdn/MovieDbAngular)
+
 An interface for the Movie DB built with Angular.
 
 ![The Martian Screenshot](https://raw.githubusercontent.com/garethdn/MovieDbAngular/master/screenshots/movie.png)
