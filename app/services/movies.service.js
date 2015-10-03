@@ -5,16 +5,20 @@
     .module('app.movies')
     .factory('moviesService', moviesService);
 
-  moviesService.$inject = ['$http', 'API_SETTINGS'];
+  moviesService.$inject = ['$http', 'API_SETTINGS', 'authenticationService'];
 
-  function moviesService($http, API_SETTINGS) {
+  function moviesService($http, API_SETTINGS, authenticationService) {
     var factory = {
       getMovie              : getMovie,
       getMovies             : getMovies,
       getMoviesByGenre      : getMoviesByGenre,
-      multiSearch           : multiSearch,
-      getViewModelDefaults  : getViewModelDefaults,
-      updateViewModel       : updateViewModel
+      getFavorites          : getFavorites,
+      getWatchlist          : getWatchlist,
+      getRated              : getRated,
+      toggleFavorite        : toggleFavorite,
+      toggleWatchlist       : toggleWatchlist,
+      rate                  : rate,
+      multiSearch           : multiSearch
     };
 
     function getMovie(options){
@@ -23,19 +27,24 @@
       return $http.get(url, { 
         params: { 
           'api_key'             : API_SETTINGS.key,
-          'append_to_response'  : 'credits,trailers,similar'
+          'append_to_response'  : 'credits,trailers,similar,account_states',
+          // `session_id` is required for `account_states` which will include favorite, 
+          // watchlist and rating information in the response. If `session_id` is undefined
+          // the request will complete regardless, just withtout the `account_states`
+          // property in thr response
+          'session_id'          : authenticationService.getSessionId()
         }})
-        .success(onSuccess)
-        .error(onError);
+        .success(onMovieSuccess)
+        .error(onMovieError);
 
-      function onSuccess(data, status, headers, config) {
+      function onMovieSuccess(data, status, headers, config) {
         data.directors  = _.where(data.credits.crew, { job: 'Director' });
         data.writers    = _.where(data.credits.crew, { department: 'Writing' });
 
         return data;
       }
 
-      function onError(error) {
+      function onMovieError(error) {
         return error;
       }
     }
@@ -43,13 +52,102 @@
     function getMovies(type, page) {
       var url = API_SETTINGS.url + '/movie/' + (type || 'popular');
 
-      return getMovieCollection(url, page);
+      var params = {
+        page: page || 1
+      };
+
+      return getMovieCollection(url, params);
     }
 
     function getMoviesByGenre(id, page) {
       var url = API_SETTINGS.url + '/genre/' + id + '/movies';
 
-      return getMovieCollection(url, page);
+      var params = {
+        page: page || 1
+      };
+
+      return getMovieCollection(url, params);
+    }
+
+    // Add authentication check for these methods
+    function getFavorites(page) {
+      // TESTING
+      // Broken workflow - `isLoggedIn` may not be accurate if the original `getUser`
+      // has not been completed. Need to `getUser` before loading the app
+
+      // TODO: why does this request work even when `authenticationService.user.id` is `undefined`
+      if (authenticationService.isLoggedIn()) {
+        console.info('Yep logged in');
+      } else {
+        console.info('Nope NOT logged in');
+      }
+      var url = API_SETTINGS.url + '/account/' + authenticationService.user.id + '/favorite/movies';
+      
+      var params = {
+        page        : page || 1,
+        session_id  : authenticationService.getSessionId()
+      };
+
+      return getMovieCollection(url, params);
+    }
+
+    function getWatchlist(page) {
+      var url = API_SETTINGS.url + '/account/' + authenticationService.user.id + '/watchlist/movies';
+      
+      var params = {
+        page        : page || 1,
+        session_id  : authenticationService.getSessionId()
+      };
+
+      return getMovieCollection(url, params);
+    }
+
+    function getRated(page) {
+      var url = API_SETTINGS.url + '/account/' + authenticationService.user.id + '/rated/movies';
+      
+      var params = {
+        page        : page || 1,
+        session_id  : authenticationService.getSessionId()
+      };
+
+      return getMovieCollection(url, params);
+    }
+
+    function toggleFavorite(options) {
+      var url = API_SETTINGS.url + '/account/' + authenticationService.user.id + '/favorite?api_key=' + API_SETTINGS.key + '&session_id=' + authenticationService.getSessionId();
+
+      // Doing it this way because `$http.post` will not generate a query string even if a params object is provided
+      return $http({
+        method: 'POST',
+        url: url,
+        data: {
+          'media_type': 'movie',
+          'media_id'  : options.mediaId,
+          'favorite'  : options.favorite
+        }
+      }).then(onToggleComplete, onToggleComplete);
+    }
+
+    function toggleWatchlist(options) {
+      var url = API_SETTINGS.url + '/account/' + authenticationService.user.id + '/watchlist?api_key=' + API_SETTINGS.key + '&session_id=' + authenticationService.getSessionId();
+
+      return $http({
+        method: 'POST',
+        url: url,
+        data: {
+          'media_type'  : 'movie',
+          'media_id'    : options.mediaId,
+          'watchlist'   : options.watchlist
+        }
+      }).then(onToggleComplete, onToggleComplete);
+    }
+
+    function onToggleComplete(data, status, headers, config) {
+      return data;
+    }
+
+    function rate() {
+
     }
 
     // Maybe this could be in a shared tv/movie service but keeping it here for now
@@ -65,12 +163,11 @@
         .error(onMovieCollectionError);
     }
 
-    function getMovieCollection(url, page) {
+    function getMovieCollection(url, params) {
       return $http.get(url, { 
-        params: { 
-          'api_key'   : API_SETTINGS.key,
-          'page'      : page || 1
-        }})
+        params: angular.extend({}, { 
+          'api_key'   : API_SETTINGS.key
+        }, params)})
         .success(onMovieCollectionSuccess)
         .error(onMovieCollectionError);
     }
@@ -82,34 +179,6 @@
 
     function onMovieCollectionError(error) {
       return error;
-    }
-
-    // TODO: maybe these methods below should be moved to a movie helpers service 
-    // and leave this file responsible for data retrieval only
-
-    // Shared method for setting defaults for the various movie collection controllers
-    function getViewModelDefaults(PAGINATION_SETTINGS) {
-      this.loading      = true;
-      this.movies       = [];
-      this.pagination   = {
-        itemsPerPage  : PAGINATION_SETTINGS.itemsPerPage,
-        maxSize       : PAGINATION_SETTINGS.maxSize,
-        totalItems    : 0,
-        currentPage   : 1
-      };
-
-      return this;
-    }
-
-    // Shared method for updating the view model for the various movie collection controllers
-    function updateViewModel(response) {
-      this.loading      = false;
-      this.movies       = response.data.results;
-
-      this.pagination.totalItems   = response.data.total_results;
-      this.pagination.currentPage  = response.data.page;
-
-      return this;
     }
 
     return factory;

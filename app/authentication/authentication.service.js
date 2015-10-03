@@ -11,10 +11,12 @@
     var credentials;
 
     var factory = {
-      user        : {},
-      login       : login,
-      logout      : logout,
-      getUser     : getUser
+      user          : {},
+      login         : login,
+      logout        : logout,
+      getUser       : getUser,
+      isLoggedIn    : isLoggedIn,
+      getSessionId  : getSessionId
     };
 
     return factory;
@@ -83,6 +85,15 @@
       // The API doesn't appear to have any way to logout so simply deleting the session if here and the cached user
       $cookies.remove('sessionId');
       factory.user = {};
+    }
+
+    function isLoggedIn() {
+      // For our purposes the user is logged in if there is a session id and the user is not an empty object
+      return $cookies.get('sessionId') && !_.isEmpty(factory.user);
+    }
+
+    function getSessionId() {
+      return $cookies.get('sessionId');
     }
 
     /*

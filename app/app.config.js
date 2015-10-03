@@ -3,54 +3,60 @@
   // John Papa [Style Y128] Configuration
   angular
     .module('app')
-    .config(routeConfig);
+    .config(stateConfig);
 
-  // Look into using ui router's $stateProvider instead
-  routeConfig.$inject = ['$routeProvider'];
+  stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-  function routeConfig($routeProvider) {
-    $routeProvider
-      .when('/login', {
-        templateUrl : 'authentication/login.html',
-        controller  : 'AuthenticationController'
+  function stateConfig($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      // .state('login', {
+      //   url         : '/login',
+      //   templateUrl : 'authentication/login.html',
+      //   controller  : 'AuthenticationController'
+      // })
+      // .state('account', {
+      //   url         : '/account',
+      //   templateUrl : 'account/account.html',
+      //   controller  : 'AccountController'
+      // })
+      .state('movie', {
+        url           : '/movie/:id',
+        templateUrl   : 'movie/movie.html',
+        controller    : 'MovieController',
+        controllerAs  : 'movieCtrl'
       })
-      .when('/account', {
-        templateUrl : 'account/account.html',
-        controller  : 'AccountController'
+      .state('moviesGenres', {
+        url           : '/movies/genre/:id',
+        templateUrl   : 'movies/movies.html',
+        controller    : 'MoviesController',
+        controllerAs  : 'moviesCtrl'
       })
-      .when('/movies', {
-        templateUrl : 'movies/movies.html',
-        controller  : 'MoviesController',
-        controllerAs: 'moviesCtrl'
+      .state('moviesFavorites', {
+        url           : '/movies/favorites:type?page',
+        templateUrl   : 'movies/movies.html',
+        controller    : 'MoviesController',
+        controllerAs  : 'moviesCtrl'
       })
-      .when('/movies/favorites', {
-        templateUrl : 'movies/movies.html',
-        controller  : 'MovieFavoritesController'
+      .state('moviesWatchlist', {
+        url           : '/movies/watchlist:type?page',
+        templateUrl   : 'movies/movies.html',
+        controller    : 'MoviesController',
+        controllerAs  : 'moviesCtrl'
       })
-      .when('/movies/watchlist', {
-        templateUrl : 'movies/movies.html',
-        controller  : 'MovieWatchlistController'
+      .state('moviesRated', {
+        url           : '/movies/rated:type?page',
+        templateUrl   : 'movies/movies.html',
+        controller    : 'MoviesController',
+        controllerAs  : 'moviesCtrl'
       })
-      .when('/movies/rated', {
-        templateUrl : 'movies/movies.html',
-        controller  : 'RatedMoviesController'
-      })
-      .when('/movies/:type', {
-        templateUrl : 'movies/movies.html',
-        controller  : 'MoviesController',
-        controllerAs: 'moviesCtrl'
-      })
-      .when('/movies/genre/:id', {
-        templateUrl : 'movies/movies.html',
-        controller  : 'MovieGenresController',
-        controllerAs: 'moviesCtrl'
-      })
-      .when('/movie/:id', {
-        templateUrl : 'movie/movie.html',
-        controller  : 'MovieController',
-        controllerAs: 'movieCtrl'
-      })
-      .otherwise({redirectTo: '/login'});
-  };
+      .state('movies', {
+        url           : '/movies/:type?page',
+        templateUrl   : 'movies/movies.html',
+        controller    : 'MoviesController',
+        controllerAs  : 'moviesCtrl'
+      });
+      
+      $urlRouterProvider.otherwise('/login');
+  }
 
 })();

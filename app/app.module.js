@@ -5,7 +5,7 @@
   angular
     .module('app', [
       // angular modules
-      'ngRoute',
+      'ui.router',
       'ngCookies',
       // 3rd party modules
       'ui.bootstrap',

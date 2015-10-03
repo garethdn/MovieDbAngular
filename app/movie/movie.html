@@ -20,10 +20,10 @@
           </div>
           <div class="row">
             <div class="col-sm-12" style="margin-top:5px;">
-              <button ng-hide="movieCtrl.movie.isFavorite" ng-click="toggleFavorite()" class="btn btn-block btn-lg btn-success">Add to Favorites</button>
-              <button ng-show="movieCtrl.movie.isFavorite" ng-click="toggleFavorite()" class="btn btn-block btn-lg btn-warning">Remove from Favorites</button>
-              <button ng-hide="movieCtrl.movie.isInWatchList" ng-click="toggleWatchList()" class="btn btn-block btn-lg btn-success">Add to Watchlist</button>
-              <button ng-show="movieCtrl.movie.isInWatchList" ng-click="toggleWatchList()" class="btn btn-block btn-lg btn-warning">Remove from Watchlist</button>
+              <button ng-hide="movieCtrl.movie.account_states.favorite" ng-click="movieCtrl.toggleFavorite()" class="btn btn-block btn-lg btn-success">Add to Favorites</button>
+              <button ng-show="movieCtrl.movie.account_states.favorite" ng-click="movieCtrl.toggleFavorite()" class="btn btn-block btn-lg btn-warning">Remove from Favorites</button>
+              <button ng-hide="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-success">Add to Watchlist</button>
+              <button ng-show="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-warning">Remove from Watchlist</button>
               <a target="_blank" ng-href="http://www.imdb.com/title/{{movieCtrl.movie.imdb_id}}" class="btn btn-block btn-lg btn-primary">More info</a>
             </div>
           </div>
