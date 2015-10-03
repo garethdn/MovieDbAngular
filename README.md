@@ -19,6 +19,7 @@ An interface for the Movie DB built with Angular.
 - [x] Filter by Genre
 - [ ] Change trailer icon style
 - [x] Link to trailer
+- [ ] Get logged-in user before loading app
 - [ ] Add logic for non-authenticated users attempting actions that require authentication
 - [ ] Investigate dark themes and maybe angular material
 - [x] Add toggle watchlist functionality
@@ -33,6 +34,7 @@ An interface for the Movie DB built with Angular.
 - [ ] Add "you might also enjoy..." section to each movie with similar titles
 - [x] Add search functionality
 - [x] Add pagination to top of pages
+- [ ] Rate movie
 - [ ] Animate scroll to top on change of page
 - [ ] Create unit tests
 - [ ] Create e2e tests
@@ -46,3 +48,5 @@ An interface for the Movie DB built with Angular.
 - [ ] Add close button to trailer modal
 - [ ] After moving to SASS, try using the Superhero Bootswatch theme
 - [ ] Add global error notifier, specifically for HTTP errors but should also be able to be invoked for other custom errors
+- [x] Add CodeClimate
+- [ ] Configure CodeClimate

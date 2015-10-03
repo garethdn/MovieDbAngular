@@ -38,7 +38,9 @@
           </h4>
           <hr>
           <ul class="list-unstyled movie-metadata">
-            <li><span class="list-key">Average rating</span>: {{movieCtrl.movie.vote_average}} ({{movieCtrl.movie.vote_count}} votes)</li>
+            <li ng-class="{'is-rated': movieCtrl.movie.account_states.rated.value}"><rating ng-model="movieCtrl.movie.account_states.rated.value" max="10" class="pull-right" ng-change="movieCtrl.ratingChanged()"></rating></li>
+
+            <li><span class="list-key">Average rating</span>: {{movieCtrl.movie.vote_average}} from {{movieCtrl.movie.vote_count}} votes</li>
             <li ng-show="movieCtrl.movie.release_date"><span class="list-key">Release date</span>: {{movieCtrl.movie.release_date|date}}</li>
             <li ng-show="movieCtrl.movie.runtime"><span class="list-key">Runtime</span>: {{movieCtrl.movie.runtime}} minutes</li>
             <li ng-show="movieCtrl.movie.production_companies.length">

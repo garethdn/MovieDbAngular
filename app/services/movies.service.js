@@ -146,8 +146,17 @@
       return data;
     }
 
-    function rate() {
+    // Performs a POST or DELETE depending on whether a rating value is passed to the method
+    function rate(options) {
+      var url = API_SETTINGS.url + '/movie/' + options.id + '/rating?api_key=' + API_SETTINGS.key + '&session_id=' + authenticationService.getSessionId();
 
+      return $http({
+        method: options.rating ? 'POST' : 'DELETE',
+        url: url,
+        data: {
+          'value': options.rating
+        }
+      }).then(onToggleComplete, onToggleComplete);
     }
 
     // Maybe this could be in a shared tv/movie service but keeping it here for now

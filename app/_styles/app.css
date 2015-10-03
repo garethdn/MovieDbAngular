@@ -106,6 +106,10 @@ header .navbar {
   margin-top: 10px;
 }
 
+.is-rated {
+  color: gold;
+}
+
 .is-favorite {
   color:red;
 }
