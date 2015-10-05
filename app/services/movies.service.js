@@ -32,7 +32,9 @@
           // watchlist and rating information in the response. If `session_id` is undefined
           // the request will complete regardless, just withtout the `account_states`
           // property in thr response
-          'session_id'          : authenticationService.getSessionId()
+          'session_id'          : authenticationService.getSessionId(),
+          // cache busting parameter
+          '_'                   : new Date().getTime()
         }})
         .success(onMovieSuccess)
         .error(onMovieError);

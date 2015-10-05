@@ -28,7 +28,7 @@ An interface for the Movie DB built with Angular.
 - [x] Get my favourites
 - [x] Get my watchlist
 - [x] Get my rated
-- [ ] Implement rating system
+- [x] Implement rating system
 - [ ] Use Less or Sass
 - [ ] Add instructions to get the app up and running
 - [ ] Add "you might also enjoy..." section to each movie with similar titles
@@ -50,4 +50,4 @@ An interface for the Movie DB built with Angular.
 - [ ] Add global error notifier, specifically for HTTP errors but should also be able to be invoked for other custom errors
 - [x] Add CodeClimate
 - [ ] Configure CodeClimate
-- [ ] Cache bust calls to move/:id
+- [x] Cache bust calls to move/:id

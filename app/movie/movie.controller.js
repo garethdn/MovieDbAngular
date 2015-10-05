@@ -21,7 +21,8 @@
 
     function activate() {
       getMovie();
-      watchUser();
+      // This is causing a double fetch on load of the movie page
+      // watchUser();
     }
 
     function getMovie() {
@@ -65,9 +66,7 @@
         rating  : vm.movie.account_states.rated.value
       };  
       
-      return moviesService.rate(options).then(function(response){
-        // vm.movie.account_states.rated.value = {};
-      });    
+      return moviesService.rate(options).then();    
     }
 
     // The reason we need to watch the user here is for the scenario where a non-logged-in user tries to perform an action
