@@ -49,6 +49,12 @@
         templateUrl   : 'movies/movies.html',
         controller    : 'MoviesController',
         controllerAs  : 'moviesCtrl'
+      })
+      .state('person', {
+        url           : '/person/:id',
+        templateUrl   : 'person/person.html',
+        controller    : 'PersonController',
+        controllerAs  : 'personCtrl'
       });
       
       $urlRouterProvider.otherwise('/login');

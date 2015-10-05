@@ -29,8 +29,8 @@
           </div>
         </div>
         <div class="media-body" style="padding-left:10px;">
-          <span ng-show="movieCtrl.movie.directors.length" class="text-upper text-bold text-muted text-xl">Directed by <span ng-repeat="director in movieCtrl.movie.directors"><a ng-href="#/people/{{director.id}}">{{director.name}}</a>{{$last ? '' : ', '}}</span> &nbsp;|&nbsp; </span>
-          <span ng-show="movieCtrl.movie.writers.length" class="text-upper text-bold text-muted text-xl">Written by <span ng-repeat="writer in movieCtrl.movie.writers"><a ng-href="#/people/{{writer.id}}">{{writer.name}}</a>{{$last ? '' : ', '}}</span></span>
+          <span ng-show="movieCtrl.movie.directors.length" class="text-upper text-bold text-muted text-xl">Directed by <span ng-repeat="director in movieCtrl.movie.directors"><a ng-href="#/person/{{director.id}}">{{director.name}}</a>{{$last ? '' : ', '}}</span> &nbsp;|&nbsp; </span>
+          <span ng-show="movieCtrl.movie.writers.length" class="text-upper text-bold text-muted text-xl">Written by <span ng-repeat="writer in movieCtrl.movie.writers"><a ng-href="#/person/{{writer.id}}">{{writer.name}}</a>{{$last ? '' : ', '}}</span></span>
           <h4>
             <a ng-href="#/movies/genre/{{genre.id}}" ng-repeat="genre in movieCtrl.movie.genres">
               <span class="label label-primary">{{genre.name}}</span>
@@ -73,14 +73,14 @@
     <div class="col-sm-4 col-xs-6 col-md-3" style="margin-bottom:30px;" ng-repeat="actor in movieCtrl.movie.credits.cast">
       <div class="media">
         <div class="pull-left">
-          <a ng-href="#/people/{{actor.id}}">
+          <a ng-href="#/person/{{actor.id}}">
             <!-- use `ng-if` here instead of `ng-show` to prevent a 404 where there is no profile_path - i.e. the src will be requested regardless of whether the img tag is hidden or not -->
             <img ng-if="actor.profile_path" class="media-object" width="92" height="138" ng-src="http://image.tmdb.org/t/p/w92/{{actor.profile_path}}" alt="{{actor.name}}">
             <img ng-hide="actor.profile_path" mdb-image-holder="holder.js/92x138/industrial/text:No \n Image">
           </a>
         </div>
         <div class="media-body">
-          <a ng-href="#/people/{{actor.id}}">
+          <a ng-href="#/person/{{actor.id}}">
             <p class="h4" style="margin:0 0 5px 0; word-break: break-word;">{{actor.name}}</p>
           </a>
           <p ng-show="actor.character" class="small text-muted">{{actor.character}}</p>

@@ -13,9 +13,9 @@
       'components',
       'app.authentication',
       'app.header',
-      // 'app.account',
       'app.movie',
-      'app.movies'
+      'app.movies',
+      'app.person'
     ]);
 
 })();
