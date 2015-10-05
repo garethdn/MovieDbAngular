@@ -14,11 +14,6 @@
       //   templateUrl : 'authentication/login.html',
       //   controller  : 'AuthenticationController'
       // })
-      // .state('account', {
-      //   url         : '/account',
-      //   templateUrl : 'account/account.html',
-      //   controller  : 'AccountController'
-      // })
       .state('movie', {
         url           : '/movie/:id',
         templateUrl   : 'movie/movie.html',

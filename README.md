@@ -51,3 +51,4 @@ An interface for the Movie DB built with Angular.
 - [x] Add CodeClimate
 - [ ] Configure CodeClimate
 - [x] Cache bust calls to move/:id
+- [ ] Look into hosting project on github pages
