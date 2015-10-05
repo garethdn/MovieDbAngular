@@ -20,7 +20,7 @@ An interface for the Movie DB built with Angular.
 - [ ] Change trailer icon style
 - [x] Link to trailer
 - [ ] Get logged-in user before loading app
-- [ ] Add logic for non-authenticated users attempting actions that require authentication
+- [x] Add logic for non-authenticated users attempting actions that require authentication
 - [ ] Investigate dark themes and maybe angular material
 - [x] Add toggle watchlist functionality
 - [ ] Fix dark loading overlay - looks bad
@@ -50,3 +50,4 @@ An interface for the Movie DB built with Angular.
 - [ ] Add global error notifier, specifically for HTTP errors but should also be able to be invoked for other custom errors
 - [x] Add CodeClimate
 - [ ] Configure CodeClimate
+- [ ] Cache bust calls to move/:id

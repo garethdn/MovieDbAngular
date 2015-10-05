@@ -26,7 +26,7 @@
         controllerAs  : 'movieCtrl'
       })
       .state('moviesGenres', {
-        url           : '/movies/genre/:id',
+        url           : '/movies/genre/:id?page',
         templateUrl   : 'movies/movies.html',
         controller    : 'MoviesController',
         controllerAs  : 'moviesCtrl'
