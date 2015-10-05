@@ -22,7 +22,7 @@
     function activate() {
       getMovie();
       // This is causing a double fetch on load of the movie page
-      // watchUser();
+      watchUser();
     }
 
     function getMovie() {
