@@ -21,7 +21,6 @@
 
     function activate() {
       getMovie();
-      // This is causing a double fetch on load of the movie page
       watchUser();
     }
 
@@ -44,7 +43,7 @@
         favorite  : !vm.movie.account_states.favorite
       };
 
-      return moviesService.toggleFavorite(options).then(function(response){
+      return moviesService.toggleFavorite(options).then(function(){
         vm.movie.account_states.favorite = !vm.movie.account_states.favorite;
       });
     }
@@ -55,7 +54,7 @@
         watchlist : !vm.movie.account_states.watchlist
       };
 
-      return moviesService.toggleWatchlist(options).then(function(response){
+      return moviesService.toggleWatchlist(options).then(function(){
         vm.movie.account_states.watchlist = !vm.movie.account_states.watchlist;
       });
     }
@@ -66,20 +65,27 @@
         rating  : vm.movie.account_states.rated.value
       };  
       
-      return moviesService.rate(options).then();    
+      return moviesService.rate(options);    
     }
 
-    // The reason we need to watch the user here is for the scenario where a non-logged-in user tries to perform an action
-    // that requires authentication, after they log in through the modal our `movie` object does not contain the `account_states`
-    // property meaning that we'll get an error if they try to `toggleFavorite` or `toggleWatchlist`. 
-
-    // Therefore we watch for the user changing and then refetch the movie
+    /*
+     *
+     * The reason we need to watch the user here is for the scenario where a non-logged-in user tries to perform an action
+     * that requires authentication, after they log in through the modal our `movie` object does not contain the `account_states`
+     * property meaning that we'll get an error if they try to `toggleFavorite` or `toggleWatchlist`. 
+     *
+     * Therefore we watch for the user changing and then refetch the movie
+     *
+     */
     function watchUser() {
       $scope.$watch(function(){
         return authenticationService.user;
       }, function(newVal, oldVal){
+        if (newVal === oldVal) {
+          return;
+        }
         getMovie();
-      }, true);
+      });
     }
   }
 
