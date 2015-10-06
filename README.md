@@ -7,6 +7,22 @@ An interface for the Movie DB built with Angular.
 ![The Martian Screenshot](https://raw.githubusercontent.com/garethdn/MovieDbAngular/master/screenshots/movie.png)
 ![Watchlist Screenshot](https://raw.githubusercontent.com/garethdn/MovieDbAngular/master/screenshots/watchlist.png)
 
+## Installation
+
+From the command line navigate to the application root and run:
+
+    npm start
+
+This will `npm install` all npm packages listed in `package.json` and `bower install` all libraries in listed in `bower.json`.
+
+When complete, `http-server` will be started automatically. Navigate to [http://localhost:8000/app](http://localhost:8000/app) to access the app. 
+
+NOTE: In some cases you may need to install `http-server` globally, with:
+
+    npm install http-server -g
+
+prepended with `sudo` for Mac and Linux.
+
 ## Objectives
 
 * Build an interface to The Movie DB with Angular 1.x
