@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="_styles/app.css">
   <link rel="stylesheet" href="_styles/loading.css">
   <link rel="stylesheet" href="movie/movie.css">
-  <link rel="stylesheet" href="components/multiSearch.directive.css">
+  <link rel="stylesheet" href="components/multiSearch/multiSearch.directive.css">
+  <link rel="stylesheet" href="components/backdrop/backdrop.directive.css">
 
   <link rel="icon" href="https://angularjs.org/favicon.ico" type="image/x-icon">
 
@@ -73,7 +74,7 @@
             </div>
             <form class="navbar-search col-md-3" style="padding: 10px 15px;">
 
-              <input mdb-multi-search type="text" class="form-control input-sm" ng-model="search.query" placeholder="Search for a movie or person..." typeahead="result.displayName for result in search.multiSearch($viewValue)" typeahead-wait-ms="400" typeahead-min-length="2" typeahead-template-url="components/multiSearch.directive.html" typeahead-on-select="search.onSelectResult($item, $model, $label)">
+              <input mdb-multi-search type="text" class="form-control input-sm" ng-model="search.query" placeholder="Search for a movie or person..." typeahead="result.displayName for result in search.multiSearch($viewValue)" typeahead-wait-ms="400" typeahead-min-length="2" typeahead-template-url="components/multiSearch/multiSearch.directive.html" typeahead-on-select="search.onSelectResult($item, $model, $label)">
 
             </form>
           </div>
@@ -89,7 +90,6 @@
   <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="../bower_components/underscore/underscore-min.js"></script>
   <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
   <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
@@ -100,8 +100,9 @@
 
   <!-- components -->
   <script src="components/components.module.js"></script>
-  <script src="components/imgHolder.directive.js"></script>
-  <script src="components/multiSearch.directive.js"></script>
+  <script src="components/imgHolder/imgHolder.directive.js"></script>
+  <script src="components/multiSearch/multiSearch.directive.js"></script>
+  <script src="components/backdrop/backdrop.directive.js"></script>
   <!-- end -->
 
   <!-- app scripts -->

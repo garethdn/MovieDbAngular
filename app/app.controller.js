@@ -5,9 +5,9 @@
     .module('app')
     .controller('AppController', AppController);
 
-  AppController.$inject = ['$modal', '$log', 'authenticationService', '$scope'];
+  AppController.$inject = ['$modal', 'authenticationService', '$scope'];
 
-  function AppController($modal, $log, authenticationService, $scope) {
+  function AppController($modal, authenticationService, $scope) {
     var vm = this;
 
     vm.user           = {};
@@ -24,7 +24,9 @@
       $scope.$watch(function(){
         return authenticationService.user;
       }, function(newVal, oldVal){
-        $log.info('App Controller -> user watch triggered', newVal, oldVal);
+        if (newVal === oldVal) {
+          return;
+        }
         vm.user = authenticationService.user;
       }, true);
     }

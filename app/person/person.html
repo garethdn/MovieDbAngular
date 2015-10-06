@@ -1,6 +1,5 @@
-<div class="backdrop-container">
-  <img class="backdrop-image" ng-if="personCtrl.person.tagged_images.results" ng-src="http://image.tmdb.org/t/p/w1920/{{(personCtrl.person.tagged_images.results | filter:{height:'1080'})[0].file_path}}">
-</div>
+<mdb-backdrop path="(personCtrl.person.tagged_images.results | filter:{height:'1080'})[0].file_path" ng-if="(personCtrl.person.tagged_images.results | filter:{height:'1080'})[0].file_path"></mdb-backdrop>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
