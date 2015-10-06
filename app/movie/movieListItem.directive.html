@@ -4,8 +4,12 @@
     <img ng-hide="movie.poster_path" mdb-image-holder="holder.js/130x195/industrial/text:No \n Image">
   </a>
   <div class="media-body">
-    <h4 class="media-heading"><a ng-href="#/movie/{{movie.id}}">{{movie.title}}</a></h4>
+    <h4 class="media-heading">
+      <a ng-href="#/movie/{{movie.id}}">{{movie.title}}</a>
+      <em ng-show="movie.release_date" class="small">({{movie.release_date | date : 'yyyy'}})</em>
+      <em ng-hide="movie.release_date" class="small">(Not available)</em>
+    </h4>
     <p class="movie-overview">{{movie.overview}}</p>
-    <p><strong>Average rating</strong>: {{movie.vote_average}}</p>
+    <p ng-show="movie.vote_average"><strong>Average rating</strong>: {{movie.vote_average}}</p>
   </div>
 </div>

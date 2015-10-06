@@ -5,9 +5,9 @@
     .module('app.authentication')
     .factory('authenticationService', authenticationService);
 
-  authenticationService.$inject = ['$http', '$cookies', '$q', 'API_SETTINGS'];
+  authenticationService.$inject = ['$http', '$cookies', '$q', 'API_SETTINGS', '_'];
 
-  function authenticationService($http, $cookies, $q, API_SETTINGS) {
+  function authenticationService($http, $cookies, $q, API_SETTINGS, _) {
     var credentials;
 
     var factory = {

@@ -5,9 +5,9 @@
     .module('app.movies')
     .factory('moviesService', moviesService);
 
-  moviesService.$inject = ['$http', 'API_SETTINGS', 'authenticationService'];
+  moviesService.$inject = ['$http', '_', 'API_SETTINGS', 'authenticationService'];
 
-  function moviesService($http, API_SETTINGS, authenticationService) {
+  function moviesService($http, _, API_SETTINGS, authenticationService) {
     var factory = {
       getMovie              : getMovie,
       getMovies             : getMovies,
@@ -27,7 +27,7 @@
       return $http.get(url, { 
         params: { 
           'api_key'             : API_SETTINGS.key,
-          'append_to_response'  : 'credits,trailers,similar,account_states',
+          'append_to_response'  : 'credits,trailers,similar,account_states,lists',
           // `session_id` is required for `account_states` which will include favorite, 
           // watchlist and rating information in the response. If `session_id` is undefined
           // the request will complete regardless, just withtout the `account_states`

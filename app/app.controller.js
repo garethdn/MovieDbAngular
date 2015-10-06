@@ -24,7 +24,7 @@
       $scope.$watch(function(){
         return authenticationService.user;
       }, function(newVal, oldVal){
-        console.info('App Controller -> user watch triggered', newVal);
+        console.info('App Controller -> user watch triggered', newVal, oldVal);
         vm.user = authenticationService.user;
       }, true);
     }

@@ -9,11 +9,6 @@
 
   function stateConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      // .state('login', {
-      //   url         : '/login',
-      //   templateUrl : 'authentication/login.html',
-      //   controller  : 'AuthenticationController'
-      // })
       .state('movie', {
         url           : '/movie/:id',
         templateUrl   : 'movie/movie.html',

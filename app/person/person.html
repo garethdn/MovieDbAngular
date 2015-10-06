@@ -1,3 +1,6 @@
+<div class="backdrop-container">
+  <img class="backdrop-image" ng-if="personCtrl.person.tagged_images.results" ng-src="http://image.tmdb.org/t/p/w1920/{{(personCtrl.person.tagged_images.results | filter:{height:'1080'})[0].file_path}}">
+</div>
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
@@ -20,4 +23,38 @@
       </div>
     </div>
   </div>
+
+  <div ng-show="personCtrl.person.movie_credits.crew.length">
+    <div class="row">
+      <div class="col-sm-12">
+        <h4 class="text-upper">Crew</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4" ng-repeat="movie in personCtrl.person.movie_credits.crew | orderBy:'-release_date'" style="margin-bottom:20px;">
+        <movie-list-item></movie-list-item>
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="personCtrl.person.movie_credits.cast.length">
+    <div class="row">
+      <div class="col-sm-4">
+        <h4 class="text-upper">Actor</h4>
+      </div>
+      <div class="col-sm-8 text-right">
+        <form>
+          <input type="text" ng-model="actorFilter" class="input-sm" placeholder="Filter by movie">
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4" ng-repeat="movie in personCtrl.person.movie_credits.cast | filter:actorFilter | orderBy:'-release_date'" style="margin-bottom:20px;">
+        <movie-list-item></movie-list-item>
+      </div>
+    </div>
+  </div>
+
 </div>

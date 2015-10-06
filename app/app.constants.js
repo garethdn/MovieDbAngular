@@ -5,6 +5,7 @@
   angular
     .module('app')
     .constant('Holder', Holder)
+    .constant('_', _)
     // TODO: move this to app.movies constants??
     .constant('MOVIE_GENRES', [
       {

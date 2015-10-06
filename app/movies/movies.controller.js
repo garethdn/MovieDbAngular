@@ -5,9 +5,9 @@
     .module('app.movies')
     .controller('MoviesController', MoviesController);
 
-  MoviesController.$inject = ['$scope', '$location', 'moviesService', '$stateParams', 'PAGINATION_SETTINGS', 'MOVIE_TYPES', 'MOVIE_GENRES', 'DEFAULT_MOVIE_TYPE', '$state'];
+  MoviesController.$inject = ['$scope', '_', '$location', 'moviesService', '$stateParams', 'PAGINATION_SETTINGS', 'MOVIE_TYPES', 'MOVIE_GENRES', 'DEFAULT_MOVIE_TYPE', '$state'];
 
-  function MoviesController($scope, $location, moviesService, $stateParams, PAGINATION_SETTINGS, MOVIE_TYPES, MOVIE_GENRES, DEFAULT_MOVIE_TYPE, $state) {
+  function MoviesController($scope, _, $location, moviesService, $stateParams, PAGINATION_SETTINGS, MOVIE_TYPES, MOVIE_GENRES, DEFAULT_MOVIE_TYPE, $state) {
     var vm = this;
 
     vm.loading      = true;

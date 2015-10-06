@@ -1,0 +1,12 @@
+{
+  "curly": true,
+  "eqeqeq": true,
+  "latedef": "nofunc",
+  "noarg": true,
+  "undef": true,
+  "unused": "strict",
+  "strict": true,
+  "globals": {
+    "angular": false
+  }
+}

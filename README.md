@@ -15,7 +15,7 @@ An interface for the Movie DB built with Angular.
 
 - [ ] Remove bower and use NPM only
 - [x] Investigate problem with removing a movie from 'Favorites'
-- [ ] Link to 'Person' page (Actor / Director / Writer)
+- [x] Link to 'Person' page (Actor / Director / Writer)
 - [x] Filter by Genre
 - [ ] Change trailer icon style
 - [x] Link to trailer
@@ -34,7 +34,7 @@ An interface for the Movie DB built with Angular.
 - [ ] Add "you might also enjoy..." section to each movie with similar titles
 - [x] Add search functionality
 - [x] Add pagination to top of pages
-- [ ] Rate movie
+- [x] Rate movie
 - [ ] Animate scroll to top on change of page
 - [ ] Create unit tests
 - [ ] Create e2e tests
@@ -52,3 +52,5 @@ An interface for the Movie DB built with Angular.
 - [ ] Configure CodeClimate
 - [x] Cache bust calls to move/:id
 - [ ] Look into hosting project on github pages
+- [ ] Update title on page change
+- [ ] Add discover functionality - basically an advanced search
