@@ -5,9 +5,9 @@
     .module('app.authentication')
     .factory('authenticationService', authenticationService);
 
-  authenticationService.$inject = ['$http', '$cookies', '$q', 'API_SETTINGS', '_'];
+  authenticationService.$inject = ['$http', '$cookies', '$log', '$q', 'API_SETTINGS', '_'];
 
-  function authenticationService($http, $cookies, $q, API_SETTINGS, _) {
+  function authenticationService($http, $cookies, $log, $q, API_SETTINGS, _) {
     var credentials;
 
     var factory = {
@@ -38,7 +38,7 @@
     }
 
     function createNewToken() {
-      console.info('Auth Service -> Creating token');
+      $log.info('Auth Service -> Creating token');
       return $http.get(API_SETTINGS.url + '/authentication/token/new', { 
         params: { 
           'api_key': API_SETTINGS.key 
@@ -46,7 +46,7 @@
     }
 
     function validateWithCredentials(response) {
-      console.info('Auth Service -> Validating with credentials');
+      $log.info('Auth Service -> Validating with credentials');
       return $http.get(API_SETTINGS.url + '/authentication/token/validate_with_login', { 
         params: { 
           'api_key'       : API_SETTINGS.key,
@@ -57,7 +57,7 @@
     }
 
     function createNewSession(response) {
-      console.info('Auth Service -> Creating new session');
+      $log.info('Auth Service -> Creating new session');
       return $http.get(API_SETTINGS.url + '/authentication/session/new', { 
         params: { 
           'api_key'       : API_SETTINGS.key,
@@ -65,8 +65,8 @@
         }});
     }
 
-    function getUser(response) {
-      console.info('Auth Service -> Getting user');
+    function getUser() {
+      $log.info('Auth Service -> Getting user');
       return $http.get(API_SETTINGS.url + '/account', { 
         params: { 
           'api_key'     : API_SETTINGS.key,
@@ -81,7 +81,7 @@
     }
 
     function logout() {
-      console.info('Auth Service -> Logging out...');
+      $log.info('Auth Service -> Logging out...');
       // The API doesn't appear to have any way to logout so simply deleting the session if here and the cached user
       $cookies.remove('sessionId');
       factory.user = {};
@@ -102,22 +102,22 @@
      *
      */
     function onTokenFailed(response){
-      console.error('Auth Service -> Failed to create token - check URL and api key');
+      $log.error('Auth Service -> Failed to create token - check URL and api key');
       return $q.reject(response);
     }
 
     function onInvalidCredentials(response) {
-      console.error('Auth Service -> Invalid credentials');
+      $log.error('Auth Service -> Invalid credentials');
       return $q.reject(response);
     }
 
     function onLoginError(response) {
-      console.error('Auth Service -> Failed to login');
+      $log.error('Auth Service -> Failed to login');
       return $q.reject(response);
     }
 
     function saveSessionId(response) {
-      console.log('Auth Service -> Login success, saving session id');
+      $log.log('Auth Service -> Login success, saving session id');
       $cookies.put('sessionId', response.data.session_id);
       return response;
     }

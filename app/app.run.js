@@ -5,10 +5,13 @@
     .module('app')
     .run(authenticate);
 
-  authenticate.$inject = ['authenticationService'];
+  authenticate.$inject = ['authenticationService', '$urlRouter'];
 
-  function authenticate(authenticationService) {
-    authenticationService.getUser();
+  function authenticate(authenticationService, $urlRouter) {
+    return authenticationService.getUser().then(function(){
+      $urlRouter.sync();
+      $urlRouter.listen();
+    });
   }
 
 })();

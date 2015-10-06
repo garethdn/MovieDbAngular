@@ -8,6 +8,9 @@
   stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
   function stateConfig($stateProvider, $urlRouterProvider) {
+    // Defer all routing until we fetch the user in the run block in `app.run.js`
+    $urlRouterProvider.deferIntercept();
+
     $stateProvider
       .state('movie', {
         url           : '/movie/:id',
