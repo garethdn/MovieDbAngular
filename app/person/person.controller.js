@@ -1,4 +1,6 @@
 (function(){
+  'use strict';
+
   angular
     .module('app.person')
     .controller('PersonController', PersonController);
@@ -8,6 +10,7 @@
   function PersonController(personService, $stateParams) {
     var vm = this;
 
+    vm.loading = true;
     vm.person = {};
 
     activate();
@@ -18,6 +21,7 @@
 
     function getPerson() {
       return personService.getPerson($stateParams.id).then(function(response){
+        vm.loading = false;
         vm.person = response.data;
       });
     }

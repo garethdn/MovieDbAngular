@@ -1,12 +1,6 @@
 mdb-backdrop .backdrop-container {
+  width: 100%;
   position: absolute;
-  -webkit-transition:all ease-out 1.2s;
-  transition:all ease-out 1.2s;
-  opacity: 0;
-}
-
-mdb-backdrop .backdrop-container.loaded{
-  opacity: 1;
 }
 
 mdb-backdrop .backdrop-container .backdrop-image {

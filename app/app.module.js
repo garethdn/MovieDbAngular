@@ -7,6 +7,7 @@
       // angular modules
       'ui.router',
       'ngCookies',
+      'ngAnimate',
       // 3rd party modules
       'ui.bootstrap',
       // app modules

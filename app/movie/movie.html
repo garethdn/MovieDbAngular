@@ -1,8 +1,8 @@
 <mdb-backdrop path="movieCtrl.movie.backdrop_path" ng-if="movieCtrl.movie.backdrop_path"></mdb-backdrop>
 
-<div class="container">
+<div class="container" mdb-loading loading="movieCtrl.loading">
   <div class="row">
-    <div class="col-sm-12" ng-class="{loading: movieCtrl.loading}" style="min-height: 500px">
+    <div class="col-sm-12">
       <h1 class="page-header">{{movieCtrl.movie.title}} 
         <em class="small">({{movieCtrl.movie.release_date | date:'yyyy'}})</em>
         <span ng-show="movieCtrl.movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:orange"></span>

@@ -5,12 +5,13 @@
     .module('app.movies')
     .controller('MoviesController', MoviesController);
 
-  MoviesController.$inject = ['$scope', '_', '$location', 'moviesService', '$stateParams', 'PAGINATION_SETTINGS', 'MOVIE_TYPES', 'MOVIE_GENRES', 'DEFAULT_MOVIE_TYPE', '$state'];
+  MoviesController.$inject = ['_', '$location', 'moviesService', '$stateParams', 'PAGINATION_SETTINGS', 'MOVIE_TYPES', 'MOVIE_GENRES', 'DEFAULT_MOVIE_TYPE', '$state'];
 
-  function MoviesController($scope, _, $location, moviesService, $stateParams, PAGINATION_SETTINGS, MOVIE_TYPES, MOVIE_GENRES, DEFAULT_MOVIE_TYPE, $state) {
+  function MoviesController(_, $location, moviesService, $stateParams, PAGINATION_SETTINGS, MOVIE_TYPES, MOVIE_GENRES, DEFAULT_MOVIE_TYPE, $state) {
     var vm = this;
 
     vm.loading      = true;
+    console.log('Loading set to true');
     vm.pageChanged  = pageChanged;
     vm.movies       = [];
     vm.pagination   = {
@@ -98,18 +99,15 @@
 
     function onLoadMoviesSuccess(response) {
       vm.loading      = false;
+      console.log('Loading set to false');
       vm.movies       = response.data.results;
 
       vm.pagination.totalItems   = response.data.total_results;
-
-      console.info('Movies controller -> Current page is', vm.pagination.currentPage);
-      console.info('Movies controller -> Page returned from server is', response.data.page);
 
       return vm;
     }
 
     function pageChanged() {
-      console.info('Movies controller -> page changed to', vm.pagination.currentPage);
       $location.search('page', vm.pagination.currentPage);
     }
 

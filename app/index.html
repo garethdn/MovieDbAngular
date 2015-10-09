@@ -6,21 +6,23 @@
   <meta charset="utf-8">
   <title>Movie DB App</title>
 
+  <!-- vendor css -->
   <link rel="stylesheet" href="../bower_components/html5-boilerplate/css/normalize.css">
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="_styles/app.css">
-  <link rel="stylesheet" href="_styles/loading.css">
-  <link rel="stylesheet" href="movie/movie.css">
+  <!-- end -->
+  
+  <!-- components css   -->
+  <link rel="stylesheet" href="components/loading/loading.directive.css">
   <link rel="stylesheet" href="components/multiSearch/multiSearch.directive.css">
   <link rel="stylesheet" href="components/backdrop/backdrop.directive.css">
+  <!-- end -->
+
+  <link rel="stylesheet" href="_assets/styles/app.css">
+  <link rel="stylesheet" href="_assets/styles/animations.css">
+  <link rel="stylesheet" href="movie/movie.css">
 
   <link rel="icon" href="https://angularjs.org/favicon.ico" type="image/x-icon">
 
-  <style type="text/css">
-    [ng-cloak] {
-      display: none !important;
-    }
-  </style>
 </head>
 
 <body>
@@ -33,10 +35,10 @@
               <a class="brand navbar-brand" href="#/movies" style="padding: 10px 15px;">
                 <img width="117" height="30" src="https://docs.angularjs.org/img/angularjs-for-header-only.svg">
               </a>
-              <ul class="nav navbar-nav">
-                <li ng-hide="app.user.id" ng-cloak><a ng-click="app.openLoginModal()">Login</a></li>
+              <ul class="nav navbar-nav" ng-cloak>
+                <li ng-hide="app.user.id"><a ng-click="app.openLoginModal()">Login</a></li>
                 <!-- User movies menu -->
-                <li class="dropdown" ng-show="app.user.id" ng-cloak>
+                <li class="dropdown" ng-show="app.user.id">
                   <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">
                     {{app.user.name}} <span class="caret"></span>
                   </a>
@@ -88,6 +90,7 @@
   <!-- vendor libs -->
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
   <script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="../bower_components/jquery/dist/jquery.min.js"></script>
   <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -103,6 +106,7 @@
   <script src="components/imgHolder/imgHolder.directive.js"></script>
   <script src="components/multiSearch/multiSearch.directive.js"></script>
   <script src="components/backdrop/backdrop.directive.js"></script>
+  <script src="components/loading/loading.directive.js"></script>
   <!-- end -->
 
   <!-- app scripts -->
