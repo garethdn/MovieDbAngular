@@ -1,6 +1,4 @@
 language: node_js
-# script:
-# - npm install
 deploy:
   provider: heroku
   api_key:
@@ -8,3 +6,4 @@ deploy:
   app: movie-db-angular
   on:
     repo: garethdn/MovieDbAngular
+  skip_cleanup: true
