@@ -1,5 +1,4 @@
 language: node_js
-before_install:
-  - npm install -g npm
 script:
-  - npm start
+  - npm install
+  - bower install
