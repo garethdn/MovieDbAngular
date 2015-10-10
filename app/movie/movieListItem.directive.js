@@ -3,10 +3,22 @@
 
 	angular
 		.module('app.movie')
-		.directive('movieListItem', function(){
-			return {
-				restrict: 'E',
-				templateUrl: 'movie/movieListItem.directive.html'
-			};
-		});
+		.directive('movieListItem', movieListItem);
+
+  movieListItem.$inject = ['API_SETTINGS'];
+
+  function movieListItem(API_SETTINGS) {
+    var directive = {
+      restrict: 'E',
+      templateUrl: 'movie/movieListItem.directive.html',
+      link: link
+    };
+
+    return directive;
+
+    function link(scope) {
+      scope.API_SETTINGS = API_SETTINGS;
+    }
+  }
+
 })();

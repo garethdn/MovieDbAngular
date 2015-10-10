@@ -5,13 +5,14 @@
     .module('app.movie')
     .controller('MovieController', MovieController);
 
-  MovieController.$inject = ['$scope', '$stateParams', 'moviesService', 'authenticationService', '$sce', '$modal'];
+  MovieController.$inject = ['$scope', '$stateParams', 'moviesService', 'authenticationService', 'API_SETTINGS','$sce', '$modal'];
 
-  function MovieController($scope, $stateParams, moviesService, authenticationService, $sce, $modal) {
+  function MovieController($scope, $stateParams, moviesService, authenticationService, API_SETTINGS, $sce, $modal) {
     var vm = this;
 
     vm.loading          = true;
     vm.movie            = {};
+    vm.API_SETTINGS     = API_SETTINGS;
     vm.toggleFavorite   = toggleFavorite;
     vm.toggleWatchlist  = toggleWatchlist;
     vm.ratingChanged    = ratingChanged;

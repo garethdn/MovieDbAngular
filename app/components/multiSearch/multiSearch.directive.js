@@ -16,13 +16,14 @@
       bindToController: true
     };
 
-    MultiSearchController.$inject = ['moviesService', '_'];
+    MultiSearchController.$inject = ['moviesService', '_', '$scope'];
 
-    function MultiSearchController(moviesService, _) {
+    function MultiSearchController(moviesService, _, $scope) {
       var vm = this;
 
       vm.multiSearch      = multiSearch;
       vm.onSelectResult   = onSelectResult;
+      vm.API_SETTINGS     = $scope.app.API_SETTINGS;
 
       function multiSearch(){
         // TODO: see if there is a cleaner way to do this

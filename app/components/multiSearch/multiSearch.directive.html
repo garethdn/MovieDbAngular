@@ -1,17 +1,15 @@
 <a ng-href="#/{{match.model.mediaLink}}" class="autocomplete-result-item">
 	<div class="media">
 	  <div class="media-left">
-	      <img class="media-object" ng-if="match.model.media_type === 'movie' && match.model.poster_path" ng-src="http://image.tmdb.org/t/p/w92/{{match.model.poster_path}}" width="60">
+	      <img class="media-object" ng-if="match.model.media_type === 'movie' && match.model.poster_path" ng-src="https://image.tmdb.org/t/p/w92/{{match.model.poster_path}}" width="60">
 
-	      <img class="media-object" ng-if="match.model.media_type === 'tv' && match.model.poster_path" ng-src="http://image.tmdb.org/t/p/w92/{{match.model.poster_path}}" width="60">
-
-	      <img class="media-object" ng-if="match.model.media_type === 'person' && match.model.profile_path" ng-src="http://image.tmdb.org/t/p/w92/{{match.model.profile_path}}" width="60">
+	      <img class="media-object" ng-if="match.model.media_type === 'person' && match.model.profile_path" ng-src="https://image.tmdb.org/t/p/w92/{{match.model.profile_path}}" width="60">
 
 	      <img ng-hide="match.model.profile_path || match.model.poster_path" mdb-image-holder="holder.js/60x90/industrial/text:No \n Image">
 	  </div>
 	  <div class="media-body">
-	    <h4 class="media-heading" style="color:#222; font-size:1em" bind-html-unsafe="match.label | typeaheadHighlight:query"></h4>
+	    <h3 class="media-heading" style="color:#222; font-size:1em" ng-bind-html="match.model.displayName | typeaheadHighlight:query"></h3>
 	    <small>{{match.model.popularity}}</small>
 	  </div>
-	</div>	
+	</div>
 </a>

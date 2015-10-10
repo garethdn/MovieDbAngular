@@ -5,12 +5,13 @@
     .module('app')
     .controller('AppController', AppController);
 
-  AppController.$inject = ['$modal', 'authenticationService', '$scope'];
+  AppController.$inject = ['$modal', 'authenticationService', '$scope', 'API_SETTINGS'];
 
-  function AppController($modal, authenticationService, $scope) {
+  function AppController($modal, authenticationService, $scope, API_SETTINGS) {
     var vm = this;
 
     vm.user           = {};
+    vm.API_SETTINGS   = API_SETTINGS;
     vm.openLoginModal = openLoginModal;
     vm.logout         = logout;
 

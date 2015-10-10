@@ -5,12 +5,13 @@
     .module('app.person')
     .controller('PersonController', PersonController);
 
-  PersonController.$inject = ['personService', '$stateParams'];
+  PersonController.$inject = ['personService', '$stateParams', 'API_SETTINGS'];
 
-  function PersonController(personService, $stateParams) {
+  function PersonController(personService, $stateParams, API_SETTINGS) {
     var vm = this;
 
     vm.loading = true;
+    vm.API_SETTINGS = API_SETTINGS;
     vm.person = {};
 
     activate();
