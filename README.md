@@ -15,13 +15,7 @@ From the command line navigate to the application root and run:
 
 This will `npm install` all npm packages listed in `package.json` and `bower install` all libraries in listed in `bower.json`.
 
-When complete, `http-server` will be started automatically. Navigate to [http://localhost:8000/app](http://localhost:8000/app) to access the app. 
-
-NOTE: In some cases you may need to install `http-server` globally, with:
-
-    npm install http-server -g
-
-prepended with `sudo` for Mac and Linux.
+When complete, an `express` server will be started automatically. Navigate to [http://localhost:8000/app](http://localhost:8000/app) to access the app.
 
 ## Objectives
 

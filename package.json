@@ -5,9 +5,6 @@
   "description": "An AngularJS interface for The MovieDB",
   "repository": "https://github.com/garethdn/MovieDbAngular",
   "license": "MIT",
-  "devDependencies": {
-    "http-server": "^0.8.5"
-  },
   "scripts": {
     "prestart": "npm install",
     "postinstall": "bower install",
