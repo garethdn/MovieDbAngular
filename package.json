@@ -9,7 +9,6 @@
     "http-server": "^0.8.5"
   },
   "scripts": {
-    "preinstall": "npm cache clean",
     "postinstall": "bower install",
     "start": "npm install"
   },
