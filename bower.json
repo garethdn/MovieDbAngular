@@ -11,6 +11,8 @@
     "angular-bootstrap": "~0.13.0",
     "bootstrap": "~3.3.0",
     "lodash": "~3.10.1",
-    "angular-animate": "~1.4.7"
+    "angular-animate": "~1.4.7",
+    "jquery": "~2.1.4",
+    "font-awesome": "~4.4.0"
   }
 }

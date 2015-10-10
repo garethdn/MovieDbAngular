@@ -5,9 +5,9 @@
     .module('app.movie')
     .controller('MovieController', MovieController);
 
-  MovieController.$inject = ['$scope', '$stateParams', 'moviesService', 'authenticationService'];
+  MovieController.$inject = ['$scope', '$stateParams', 'moviesService', 'authenticationService', '$sce', '$modal'];
 
-  function MovieController($scope, $stateParams, moviesService, authenticationService) {
+  function MovieController($scope, $stateParams, moviesService, authenticationService, $sce, $modal) {
     var vm = this;
 
     vm.loading          = true;
@@ -15,6 +15,8 @@
     vm.toggleFavorite   = toggleFavorite;
     vm.toggleWatchlist  = toggleWatchlist;
     vm.ratingChanged    = ratingChanged;
+    vm.getTrailer       = getTrailer;
+    vm.playTrailer      = playTrailer;
 
     // John Papa [Style Y080] Resolve start-up logic for a controller in an `activate` function.
     activate();
@@ -49,6 +51,10 @@
     }
 
     function toggleWatchlist() {
+      if (!authenticationService.isLoggedIn()) {
+        return $scope.app.openLoginModal();
+      }
+
       var options = {
         mediaId   : vm.movie.id,
         watchlist : !vm.movie.account_states.watchlist
@@ -66,6 +72,21 @@
       };  
       
       return moviesService.rate(options);    
+    }
+
+    function getTrailer() {
+      return vm.movie && 
+        vm.movie.trailers &&
+        vm.movie.trailers.youtube.length ? vm.movie.trailers.youtube[0].source : '';
+    }
+
+    function playTrailer(){
+      $scope.trailerUrl = $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + getTrailer());
+
+      $modal.open({
+        templateUrl: 'trailer/trailer.html',
+        scope: $scope
+      });
     }
 
     /*

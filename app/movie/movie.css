@@ -1,4 +1,18 @@
-movie-list-item .movie-overview {
+/*movie-list-item .movie-overview {
 	max-height: 120px;
 	overflow:hidden;
+}*/
+
+.movie-action-icon {
+  font-size: 2em;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.movie-action-icon:hover {
+  opacity: 0.6;
+}
+
+.is-favorite {
+  color: #FF3D3D;
 }

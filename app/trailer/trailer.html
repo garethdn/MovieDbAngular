@@ -1,3 +1,9 @@
-<div class="modal-body">
-  <iframe width="560" height="315" ng-src="{{trailerUrl}}" frameborder="0" allowfullscreen></iframe>
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="modal-title">{{movieCtrl.movie.title}} <em class="small">({{movieCtrl.movie.release_date | date:'yyyy'}})</em></h4>
+</div>
+<div class="modal-body" style="padding: 5px 5px 0px 4px;">
+  <iframe width="590" height="345" ng-src="{{trailerUrl}}" frameborder="0" allowfullscreen></iframe>
 </div>

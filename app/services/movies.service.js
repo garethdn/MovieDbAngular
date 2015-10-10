@@ -39,6 +39,7 @@
         .success(onMovieSuccess)
         .error(onMovieError);
 
+      /* jshint unused:false */
       function onMovieSuccess(data, status, headers, config) {
         data.directors  = _.where(data.credits.crew, { job: 'Director' });
         data.writers    = _.where(data.credits.crew, { department: 'Writing' });

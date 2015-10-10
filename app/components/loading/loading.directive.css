@@ -7,8 +7,9 @@
 }
 
 .loading::before {
+  min-height: 500px;
   content: '';
-  background: #222 url(../../_assets/images/gears.gif) no-repeat center 200px;
+  background: rgba(32,62,80,1.0) url(../../_assets/images/gears.gif) no-repeat center 200px;
   width: 100%;
   height: 100%;
   position: absolute;

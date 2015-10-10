@@ -5,23 +5,18 @@
     .module('app.authentication')
     .controller('AuthenticationController', AuthenticationController);
 
-  AuthenticationController.$inject = ['authenticationService', '$modalInstance'];
+  AuthenticationController.$inject = ['authenticationService', '$modalInstance', '$log'];
 
-  function AuthenticationController(authenticationService, $modalInstance){
+  function AuthenticationController(authenticationService, $modalInstance, $log){
     var vm = this;
 
-    vm.title      = "This is a test!";
+    vm.title      = "Login";
     vm.loading    = false;
-    vm.closeModal = closeModal;
     vm.login      = login;
     vm.user       = {
       username    : '',
       password    : ''
     };
-
-    function closeModal() {
-      $modalInstance.close();
-    }
 
     function login() {
       vm.loading = true;
@@ -34,14 +29,14 @@
     }
 
     function onLoginSuccess(response) {
-      console.info('Auth Controller -> login successful', response);
+      $log.info('Auth Controller -> login successful', response);
 
       vm.user = response.data;
       $modalInstance.dismiss();
     }
 
     function onLoginError(response) {
-      console.error('Auth Controller -> login failed', response);
+      $log.error('Auth Controller -> login failed', response);
     }
 
     return vm;
