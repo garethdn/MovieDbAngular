@@ -91,7 +91,7 @@
     ])
     .constant('API_SETTINGS', {
       key   : '05fa93373002b486f99f4b5b15197746',
-      url   : 'http://api.themoviedb.org/3'
+      url   : 'https://api.themoviedb.org/3'
     })
     .constant('PAGINATION_SETTINGS', {
       itemsPerPage  : 20,
