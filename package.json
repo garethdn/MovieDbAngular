@@ -13,7 +13,7 @@
   },
   "scripts": {
     "postinstall": "bower install",
-    "prestart": "npm install"
+    "start": "npm install"
   },
   "dependencies": {
     "bower": "^1.5.3",
