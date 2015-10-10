@@ -13,8 +13,7 @@
   },
   "scripts": {
     "postinstall": "bower install",
-    "prestart": "npm install",
-    "start": "http-server -a localhost -p 8000 -c-1"
+    "prestart": "npm install"
   },
   "dependencies": {
     "bower": "^1.5.3",
