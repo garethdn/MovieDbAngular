@@ -1,6 +1,4 @@
 language: node_js
-script:
-- npm install
 deploy:
   provider: heroku
   api_key:

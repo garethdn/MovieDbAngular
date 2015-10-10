@@ -12,7 +12,7 @@
     "karma-junit-reporter": "^0.3.7"
   },
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "bower cache clean && bower install",
     "start": "npm install"
   },
   "dependencies": {
