@@ -2,6 +2,10 @@
   "name": "MovieDbAngular",
   "private": false,
   "version": "0.0.0",
+  "engines": {
+    "node": "4.0.0",
+    "npm": "2.14.2"
+  },
   "description": "An AngularJS interface for The MovieDB",
   "repository": "https://github.com/garethdn/MovieDbAngular",
   "license": "MIT",
@@ -9,8 +13,7 @@
     "http-server": "^0.8.5"
   },
   "scripts": {
-    "postinstall": "bower install",
-    "start": "npm install"
+    "postinstall": "bower install"
   },
   "dependencies": {
     "bower": "^1.5.3",
