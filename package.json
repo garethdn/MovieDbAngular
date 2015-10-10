@@ -9,11 +9,13 @@
     "http-server": "^0.8.5"
   },
   "scripts": {
+    "prestart": "npm install",
     "postinstall": "bower install",
-    "start": "npm install"
+    "start": "node web.js"
   },
   "dependencies": {
+    "angular-ui-router": "^0.2.15",
     "bower": "^1.5.3",
-    "angular-ui-router": "^0.2.15"
+    "express": "^4.13.3"
   }
 }
