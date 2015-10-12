@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <title>Movie DB App</title>
 
   <!-- vendor css -->
@@ -32,61 +32,66 @@
 
 <body>
   <div ng-controller="AppController as app">
-    <header class="header header-fixed" ng-controller="AppHeaderController as header">
-      <section class="navbar navbar-default">
+    <header ng-controller="AppHeaderController as header">
+      <nav class="navbar navbar-inverse">
         <div class="container">
-          <div class="row">
-            <div class="col-md-9">
-              <a class="brand navbar-brand" href="#/" style="padding: 10px 15px;">
-                <img width="117" height="30" src="https://docs.angularjs.org/img/angularjs-for-header-only.svg">
-              </a>
-              <ul class="nav navbar-nav" ng-cloak>
-                <li ng-hide="app.user.id"><a ng-click="app.openLoginModal()">Login</a></li>
-                <!-- User movies menu -->
-                <li class="dropdown" ng-show="app.user.id">
-                  <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">
-                    {{app.user.name}} <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#/movies/favorites">My Favorites</a></li>
-                    <li><a href="#/movies/watchlist">My Watchlist</a></li>
-                    <li><a href="#/movies/rated">Movies I've Rated</a></li>
-                    <li><a ng-click="app.logout()">Logout</a></li>
-                  </ul>
-                </li>
-                <!-- Movies menu -->
-                <li class="dropdown">
-                  <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Movies <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#/movies/popular">Popular</a></li>
-                    <li><a href="#/movies/top_rated">Top Rated</a></li>
-                    <li><a href="#/movies/upcoming">Upcoming</a></li>
-                    <li><a href="#/movies/now_playing">Now playing</a></li>
-                  </ul>
-                </li>
-                <!-- Genres menu -->
-                <li class="dropdown" >
-                  <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Genres <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li ng-repeat="genre in header.movieGenres | orderBy:'label'">
-                      <a href="#movies/genre/{{genre.id}}">{{genre.label}}</a>                  
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-            <form class="navbar-search col-md-3" style="padding: 9px 15px;">
-
-              <input mdb-multi-search type="text" class="form-control input-sm" ng-model="search.query" placeholder="Search for a movie or person..." typeahead="result.displayName for result in search.multiSearch($viewValue)" typeahead-wait-ms="400" typeahead-min-length="2" typeahead-template-url="components/multiSearch/multiSearch.directive.html" typeahead-on-select="search.onSelectResult($item, $model, $label)">
-
-            </form>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="padding: 20px 10px;">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="brand navbar-brand" href="#/" style="padding: 10px 15px;">
+              <img width="176" height="45" src="https://docs.angularjs.org/img/angularjs-for-header-only.svg">
+            </a>
           </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" ng-cloak>
+              <li class="active"><a href="#/">Home</a></li>
+              <li ng-hide="app.user.id"><a ng-click="app.openLoginModal()">Login</a></li>
+              <li class="dropdown" ng-show="app.user.id">
+                <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                  {{app.user.name}} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#/movies/favorites">My Favorites</a></li>
+                  <li><a href="#/movies/watchlist">My Watchlist</a></li>
+                  <li><a href="#/movies/rated">Movies I've Rated</a></li>
+                  <li><a ng-click="app.logout()">Logout</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Movies <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#/movies/popular">Popular</a></li>
+                  <li><a href="#/movies/top_rated">Top Rated</a></li>
+                  <li><a href="#/movies/upcoming">Upcoming</a></li>
+                  <li><a href="#/movies/now_playing">Now playing</a></li>
+                </ul>
+              </li>
+              
+              <li class="dropdown" >
+                <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Genres <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li ng-repeat="genre in header.movieGenres | orderBy:'label'">
+                    <a href="#movies/genre/{{genre.id}}">{{genre.label}}</a>                  
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input mdb-multi-search type="text" class="form-control" ng-model="search.query" placeholder="Search for a movie or person..." typeahead="result.displayName for result in search.multiSearch($viewValue)" typeahead-wait-ms="400" typeahead-min-length="2" typeahead-template-url="components/multiSearch/multiSearch.directive.html" typeahead-on-select="search.onSelectResult($item, $model, $label)">
+              </div>
+            </form>
+          </div><!--/.nav-collapse -->
         </div>
-      </section>
+      </nav>
     </header>
 
     <div ui-view style="position:relative"></div>

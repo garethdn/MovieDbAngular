@@ -1,7 +1,7 @@
 <a href="#/movie/{{item.id}}" class="showcase-item">
   <div class="background" ng-style="item.backdrop_path && baseImageUrl ? {'background-image': getBackgroundImage(this)} : {}"></div>
   <div class="contents">  
-    <h3 class="text-bold item-title">{{item.title}}</h3>
+    <h3 class="item-title">{{item.title}}</h3>
     <div class="item-detail">
       <p class="small">
         {{item.overview | limitTo: 160}}{{item.overview.length > 160 ? '...' : ''}}

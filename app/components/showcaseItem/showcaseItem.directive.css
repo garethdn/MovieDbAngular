@@ -2,6 +2,12 @@
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .showcase {
+    margin: 0 -15px;
+  }
+}
+
 .showcase .showcase-item {
   display: block;
   position: relative;
@@ -12,8 +18,10 @@
   overflow: hidden;
 }
 
-.showcase .showcase-item.main {
-  height: 380px;
+@media (min-width: 768px) {
+  .showcase .showcase-item.main {
+    height: 380px;
+  }
 }
 
 .showcase .showcase-item .background {
@@ -40,6 +48,7 @@
 }
 
 .showcase .showcase-item .contents {
+  font-weight: 400;
   text-shadow: -2px 2px 0px #333;
   z-index: 50;
   position: absolute;
