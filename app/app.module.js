@@ -13,6 +13,7 @@
       // app modules
       'components',
       'app.authentication',
+      'app.dashboard',
       'app.header',
       'app.movie',
       'app.movies',

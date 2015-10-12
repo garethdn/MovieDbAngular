@@ -31,7 +31,7 @@
           // `session_id` is required for `account_states` which will include favorite, 
           // watchlist and rating information in the response. If `session_id` is undefined
           // the request will complete regardless, just withtout the `account_states`
-          // property in thr response
+          // property in the response
           'session_id'          : authenticationService.getSessionId(),
           // cache busting parameter
           '_'                   : new Date().getTime()
@@ -39,7 +39,6 @@
         .success(onMovieSuccess)
         .error(onMovieError);
 
-      /* jshint unused:false */
       function onMovieSuccess(data, status, headers, config) {
         data.directors  = _.where(data.credits.crew, { job: 'Director' });
         data.writers    = _.where(data.credits.crew, { department: 'Writing' });
@@ -74,11 +73,7 @@
 
     // Add authentication check for these methods
     function getFavorites(page) {
-      // TESTING
-      // Broken workflow - `isLoggedIn` may not be accurate if the original `getUser`
-      // has not been completed. Need to `getUser` before loading the app
-
-      // TODO: why does this request work even when `authenticationService.user.id` is `undefined`
+      // TODO: find out why does this request work even when `authenticationService.user.id` is `undefined`
       if (authenticationService.isLoggedIn()) {
         console.info('Yep logged in');
       } else {

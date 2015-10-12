@@ -61,12 +61,14 @@
                   <p ng-repeat="director in movieCtrl.movie.directors">
                     <a ng-href="#/person/{{director.id}}">{{director.name}}</a>
                   </p>
+                  <p ng-hide="movieCtrl.movie.directors.length" class="text-muted">Not available</p>
                 </div>
                 <div class="col-sm-4">
                   <p class="text-upper">Written by</p>
                   <p ng-repeat="writer in movieCtrl.movie.writers">
-                    <a ng-href="#/person/{{writer.id}}">{{writer.name}}</a>
+                    <a ng-href="#/person/{{writer.id}}">{{writer.name}} <em>({{writer.job}})</em></a>
                   </p>
+                  <p ng-hide="movieCtrl.movie.writers.length" class="text-muted">Not available</p>
                 </div>
                 <div class="col-sm-4">
                   <button ng-hide="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-success">Add to Watchlist</button>

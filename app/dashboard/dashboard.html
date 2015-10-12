@@ -1,0 +1,56 @@
+<div class="container" mdb-loading loading="dashCtrl.loading">
+  <div class="row">
+    <div class="col-sm-12">
+      <!-- Most popular showcase -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="page-header">
+            <h1>Most Popular Movies</h1>
+        </div>
+        </div>
+      </div>
+      <div class="row showcase">
+        <div class="col-sm-4">
+          <div class="row">
+            <mdb-showcase-item item="dashCtrl.popularItems[0]" base-image-url="app.API_SETTINGS.baseImageUrl" class="col-sm-12 main"></mdb-showcase-item>
+            <mdb-showcase-item item="dashCtrl.popularItems[1]" base-image-url="app.API_SETTINGS.baseImageUrl" class="col-sm-12"></mdb-showcase-item>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="row">
+            <mdb-showcase-item item="dashCtrl.popularItems[2]" base-image-url="app.API_SETTINGS.baseImageUrl" class="col-sm-12"></mdb-showcase-item>
+            <mdb-showcase-item item="dashCtrl.popularItems[3]" base-image-url="app.API_SETTINGS.baseImageUrl" class="col-sm-12"></mdb-showcase-item>
+            <mdb-showcase-item item="dashCtrl.popularItems[4]" base-image-url="app.API_SETTINGS.baseImageUrl" class="col-sm-12"></mdb-showcase-item>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="row">
+            <mdb-showcase-item item="dashCtrl.popularItems[5]" base-image-url="app.API_SETTINGS.baseImageUrl" class="col-sm-12"></mdb-showcase-item>
+            <mdb-showcase-item item="dashCtrl.popularItems[6]" base-image-url="app.API_SETTINGS.baseImageUrl" class="col-sm-12 main"></mdb-showcase-item>
+          </div>
+        </div>
+      </div>
+
+      <!-- Highest rated showcase -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="page-header">
+            <h1>Highest Rated Movies</h1>
+        </div>
+        </div>
+      </div>
+      <div class="row showcase">
+        <mdb-showcase-item ng-repeat="movie in dashCtrl.highestRatedItems | limitTo:3:0" item="movie" base-image-url="app.API_SETTINGS.baseImageUrl" class="col-sm-4 main"></mdb-showcase-item>
+      </div>
+
+      <div class="row showcase">
+        <mdb-showcase-item ng-repeat="movie in dashCtrl.highestRatedItems | limitTo:4:3" item="movie" base-image-url="app.API_SETTINGS.baseImageUrl" class="col-sm-3"></mdb-showcase-item>
+      </div>
+
+      <div class="row showcase">
+        <mdb-showcase-item ng-repeat="movie in dashCtrl.highestRatedItems | limitTo:6:7" item="movie" base-image-url="app.API_SETTINGS.baseImageUrl" class="col-sm-2"></mdb-showcase-item>
+      </div>
+    </div>
+  </div>
+</div>
+

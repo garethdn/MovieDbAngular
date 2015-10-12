@@ -9,7 +9,6 @@
 
   function authenticate(authenticationService, $urlRouter) {
     return authenticationService.getUser().then(function(){
-      console.log('About to sync router');
       $urlRouter.sync();
       $urlRouter.listen();
     });

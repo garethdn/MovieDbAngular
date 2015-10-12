@@ -1,0 +1,105 @@
+.showcase {
+  margin: 0;
+}
+
+.showcase .showcase-item {
+  display: block;
+  position: relative;
+  height: 190px;
+  color: #fff;
+  background-color: #333;
+  /*This is to prevent the blur bleeding over the edges on hover*/
+  overflow: hidden;
+}
+
+.showcase .showcase-item.main {
+  height: 380px;
+}
+
+.showcase .showcase-item .background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transition: -webkit-filter 0.3s, filter 0.3s;
+}
+
+.showcase .showcase-item:hover .background {
+    -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+
+.showcase .showcase-item .contents {
+  text-shadow: -2px 2px 0px #333;
+  z-index: 50;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 0 15px;
+}
+
+.showcase .showcase-item .contents .item-detail {
+  margin: 0 -15px;
+  padding: 10px 15px;
+  position: absolute;
+  bottom: -75px;
+  height: 75px;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+
+  transition: bottom 0.3s;
+}
+
+
+.showcase .showcase-item.col-sm-2 .contents .item-title {
+  font-size: 1em;
+}
+
+.showcase .showcase-item.col-sm-3 .contents .item-title {
+  font-size: 1.4em;
+}
+
+.showcase .showcase-item:not(.col-sm-2):not(.col-sm-3):hover .contents .item-detail {
+  bottom: 0px; 
+}
+
+.showcase .showcase-item::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  z-index: 40;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.showcase .showcase-item:nth-child(1)::before,
+.showcase .showcase-item:nth-child(odd)::before {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)),
+    linear-gradient(135deg, rgba(255, 255, 0, 0.3), rgba(240, 109, 6, 0.3));
+}
+
+.showcase .showcase-item:nth-child(2)::before,
+.showcase .showcase-item:nth-child(even)::before {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)),
+    linear-gradient(135deg, rgba(65, 119, 17, 0.5),rgba(0, 47, 75, 0.5));
+}
+
+.showcase .showcase-item:nth-child(3)::before {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)),
+    linear-gradient(135deg, rgba(220, 66, 37, 0.5), rgba(41, 36, 132, 0.5));
+}
+
+

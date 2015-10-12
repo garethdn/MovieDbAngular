@@ -8,7 +8,6 @@
 
   <!-- vendor css -->
   <link rel="stylesheet" href="../bower_components/html5-boilerplate/css/normalize.css">
-  <!-- <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"> -->
   <link rel="stylesheet" href="../bower_components/bootswatch/superhero/bootstrap.min.css">
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- end -->
@@ -17,11 +16,13 @@
   <link rel="stylesheet" href="components/loading/loading.directive.css">
   <link rel="stylesheet" href="components/multiSearch/multiSearch.directive.css">
   <link rel="stylesheet" href="components/backdrop/backdrop.directive.css">
+  <link rel="stylesheet" href="components/showcaseItem/showcaseItem.directive.css">
   <!-- end -->
 
   <link rel="stylesheet" href="_assets/styles/app.css">
   <link rel="stylesheet" href="_assets/styles/animations.css">
   <link rel="stylesheet" href="movie/movie.css">
+  <link rel="stylesheet" href="dashboard/dashboard.css">
 
   <link rel="icon" href="https://angularjs.org/favicon.ico" type="image/x-icon">
 
@@ -34,7 +35,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9">
-              <a class="brand navbar-brand" href="#/movies" style="padding: 10px 15px;">
+              <a class="brand navbar-brand" href="#/" style="padding: 10px 15px;">
                 <img width="117" height="30" src="https://docs.angularjs.org/img/angularjs-for-header-only.svg">
               </a>
               <ul class="nav navbar-nav" ng-cloak>
@@ -112,6 +113,7 @@
   <script src="components/multiSearch/multiSearch.directive.js"></script>
   <script src="components/backdrop/backdrop.directive.js"></script>
   <script src="components/loading/loading.directive.js"></script>
+  <script src="components/showcaseItem/showcaseItem.directive.js"></script>
   <!-- end -->
 
   <!-- app scripts -->
@@ -150,6 +152,11 @@
   <script src="person/person.module.js"></script>
   <script src="person/person.controller.js"></script>
   <script src="person/person.service.js"></script>
+  <!-- end -->
+
+  <!-- dashboard -->
+  <script src="dashboard/dashboard.module.js"></script>
+  <script src="dashboard/dashboard.controller.js"></script>
   <!-- end -->
 
 </body>

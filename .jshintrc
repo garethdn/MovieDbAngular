@@ -4,7 +4,7 @@
   "latedef": "nofunc",
   "noarg": true,
   "undef": true,
-  "unused": "strict",
+  "unused": "vars",
   "strict": true,
   "globals": {
     "angular": false

@@ -53,9 +53,15 @@
         templateUrl   : 'person/person.html',
         controller    : 'PersonController',
         controllerAs  : 'personCtrl'
+      })
+      .state('index', {
+        url           : '/',
+        templateUrl   : 'dashboard/dashboard.html',
+        controller    : 'DashboardController',
+        controllerAs  : 'dashCtrl'
       });
       
-      $urlRouterProvider.otherwise('/login');
+      // $urlRouterProvider.otherwise('/login');
   }
 
 })();
