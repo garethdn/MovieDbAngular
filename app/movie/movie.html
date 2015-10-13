@@ -43,8 +43,8 @@
               </div>
 
               <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 15px; border-top: 1px solid white;">
-                <rating ng-show="app.user.id" ng-model="movieCtrl.movie.account_states.rated.value" max="10" ng-change="movieCtrl.ratingChanged()"></rating>
-                <rating ng-hide="app.user.id" readonly=true ng-model="nothing" max="10"></rating>
+                <uib-rating ng-show="app.user.id" ng-model="movieCtrl.movie.account_states.rated.value" max="10" ng-change="movieCtrl.ratingChanged()"></uib-rating>
+                <uib-rating ng-hide="app.user.id" readonly=true ng-model="nothing" max="10"></uib-rating>
               </div>
             </div>
           </div>

@@ -48,7 +48,6 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav" ng-cloak>
-              <li class="active"><a href="#/">Home</a></li>
               <li ng-hide="app.user.id"><a ng-click="app.openLoginModal()">Login</a></li>
               <li class="dropdown" ng-show="app.user.id">
                 <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -86,7 +85,16 @@
             </ul>
             <form class="navbar-form navbar-right" role="search">
               <div class="form-group">
-                <input mdb-multi-search type="text" class="form-control" ng-model="search.query" placeholder="Search for a movie or person..." typeahead="result.displayName for result in search.multiSearch($viewValue)" typeahead-wait-ms="400" typeahead-min-length="2" typeahead-template-url="components/multiSearch/multiSearch.directive.html" typeahead-on-select="search.onSelectResult($item, $model, $label)">
+                <input mdb-multi-search type="text" 
+                  class="form-control" 
+                  ng-model="search.query" 
+                  placeholder="Search for a movie or person..." 
+                  uib-typeahead="result.displayName for result in search.multiSearch($viewValue)" 
+                  typeahead-wait-ms="400" 
+                  typeahead-min-length="2" 
+                  typeahead-template-url="components/multiSearch/multiSearch.directive.html" 
+                  typeahead-popup-template-url="components/multiSearch/dropdown.html" 
+                  typeahead-on-select="search.onSelectResult($item, $model, $label)">
               </div>
             </form>
           </div><!--/.nav-collapse -->

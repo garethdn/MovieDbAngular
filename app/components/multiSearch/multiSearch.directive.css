@@ -1,3 +1,8 @@
-.dropdown-menu > li > a.autocomplete-result-item {
+.autocomplete-dropdown .dropdown-menu .media-body {
+  white-space: normal;
+  min-width: 230px;
+}
+
+.autocomplete-dropdown .dropdown-menu > li > a.autocomplete-result-item {
 	padding: 5px;
 }

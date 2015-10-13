@@ -5,9 +5,9 @@
     .module('app')
     .controller('AppController', AppController);
 
-  AppController.$inject = ['$modal', 'authenticationService', '$scope', 'API_SETTINGS'];
+  AppController.$inject = ['$uibModal', 'authenticationService', '$scope', 'API_SETTINGS'];
 
-  function AppController($modal, authenticationService, $scope, API_SETTINGS) {
+  function AppController($uibModal, authenticationService, $scope, API_SETTINGS) {
     var vm = this;
 
     vm.user           = {};
@@ -33,7 +33,7 @@
     }
 
     function openLoginModal() {
-      $modal.open({
+      $uibModal.open({
         templateUrl       : 'app_header/login_modal.html',
         controller        : 'AuthenticationController',
         controllerAs      : 'authCtrl',

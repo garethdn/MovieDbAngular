@@ -5,9 +5,9 @@
     .module('app.movie')
     .controller('MovieController', MovieController);
 
-  MovieController.$inject = ['$scope', '$stateParams', 'moviesService', 'authenticationService', 'API_SETTINGS','$sce', '$modal'];
+  MovieController.$inject = ['$scope', '$stateParams', 'moviesService', 'authenticationService', 'API_SETTINGS','$sce', '$uibModal'];
 
-  function MovieController($scope, $stateParams, moviesService, authenticationService, API_SETTINGS, $sce, $modal) {
+  function MovieController($scope, $stateParams, moviesService, authenticationService, API_SETTINGS, $sce, $uibModal) {
     var vm = this;
 
     vm.loading          = true;
@@ -84,7 +84,7 @@
     function playTrailer(){
       $scope.trailerUrl = $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + getTrailer());
 
-      $modal.open({
+      $uibModal.open({
         templateUrl: 'trailer/trailer.html',
         scope: $scope
       });

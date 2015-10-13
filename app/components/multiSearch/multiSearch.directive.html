@@ -8,7 +8,7 @@
 	      <img ng-hide="match.model.profile_path || match.model.poster_path" mdb-image-holder="holder.js/60x90/industrial/text:No \n Image">
 	  </div>
 	  <div class="media-body">
-	    <h3 class="media-heading" style="font-size:1.4em" ng-bind-html="match.model.displayName | typeaheadHighlight:query"></h3>
+	    <h3 class="media-heading" style="font-size:1.4em" ng-bind-html="match.model.displayName | uibTypeaheadHighlight:query"></h3>
 	  </div>
 	</div>
 </a>

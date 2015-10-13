@@ -17,8 +17,8 @@
  line-height: 45px;
 }
 
-.media, .media-body {
-  overflow: visible; 
+.navbar-collapse.in {
+  overflow: visible;
 }
 
 button {
@@ -35,7 +35,8 @@ header .navbar {
 }
 
 header .navbar-form {
-  padding: 10px 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .text-upper {
