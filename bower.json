@@ -7,7 +7,7 @@
     "angular-mocks": "~1.4.x",
     "html5-boilerplate": "~4.3.0",
     "angular-cookies": "~1.4.0",
-    "holderjs": "~2.4.1",
+    "holderjs": "~2.8.0",
     "angular-bootstrap": "~0.13.0",
     "bootstrap": "~3.3.0",
     "lodash": "~3.10.1",

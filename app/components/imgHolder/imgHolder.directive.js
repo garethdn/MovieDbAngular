@@ -20,7 +20,8 @@
 			attrs.$set('data-src', attrs.mdbImageHolder);
 			
 			Holder.run({ 
-				images	: element[0]
+				images	: element[0],
+				theme		: 'vine'
 			});
 		}
 

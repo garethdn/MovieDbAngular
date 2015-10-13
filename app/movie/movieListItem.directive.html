@@ -1,6 +1,6 @@
 <div class="movie-list-item">
   <a href="#/movie/{{movie.id}}">
     <img ng-if="movie.poster_path" ng-src="{{API_SETTINGS.baseImageUrl}}w300/{{movie.poster_path}}" alt="{{movie.title}}">
-    <img ng-if="!movie.poster_path" mdb-image-holder="holder.js/100%x100%/social/text:{{movie.title}}" alt="{{movie.title}}">
+    <img ng-if="!movie.poster_path" mdb-image-holder="holder.js/100px100p?theme=sky&text={{movie.title}}" alt="{{movie.title}}">
   </a>
 </div>
