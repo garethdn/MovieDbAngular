@@ -20,8 +20,7 @@
 			attrs.$set('data-src', attrs.mdbImageHolder);
 			
 			Holder.run({ 
-				images	: element[0], 
-				nocss	: true
+				images	: element[0]
 			});
 		}
 

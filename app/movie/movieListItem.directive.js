@@ -11,7 +11,8 @@
     var directive = {
       restrict: 'E',
       templateUrl: 'movie/movieListItem.directive.html',
-      link: link
+      link: link,
+      replace: true
     };
 
     return directive;

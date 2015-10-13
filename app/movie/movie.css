@@ -1,18 +1,30 @@
-/*movie-list-item .movie-overview {
-	max-height: 120px;
-	overflow:hidden;
-}*/
-
-.movie-action-icon {
-  font-size: 2em;
-  padding: 10px;
-  cursor: pointer;
+.movie-list-item.col-xs-6 {
+  width: 47%;
+  padding-bottom: 78.33%;
+  margin: 1.5%;
 }
 
-.movie-action-icon:hover {
-  opacity: 0.6;
+@media (min-width: 480px) {
+  .movie-list-item.col-sm-4 {
+    width: 30.33%;
+    padding-bottom: 50.55%;
+    margin: 1.5%;
+  }
 }
 
-.is-favorite {
-  color: #FF3D3D;
+@media (min-width: 992px) {
+  .movie-list-item.col-md-3 {
+    width: 22%;
+    padding-bottom: 33%;
+    margin: 1.5%;
+  }
+}
+
+.movie-list-item img {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
 }

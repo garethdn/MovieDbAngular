@@ -1,15 +1,6 @@
-<div class="media">
-  <a class="pull-left" ng-href="#/movie/{{movie.id}}">
-    <img ng-if="movie.poster_path" class="media-object" height="195" width="130" ng-src="{{API_SETTINGS.baseImageUrl}}w130/{{movie.poster_path}}" alt="{{movie.title}}">
-    <img ng-hide="movie.poster_path" mdb-image-holder="holder.js/130x195/industrial/text:No \n Image">
+<div class="movie-list-item">
+  <a href="#/movie/{{movie.id}}">
+    <img ng-if="movie.poster_path" ng-src="{{API_SETTINGS.baseImageUrl}}w300/{{movie.poster_path}}" alt="{{movie.title}}">
+    <img ng-if="!movie.poster_path" mdb-image-holder="holder.js/100%x100%/social/text:{{movie.title}}" alt="{{movie.title}}">
   </a>
-  <div class="media-body">
-    <h4 class="media-heading">
-      <a ng-href="#/movie/{{movie.id}}">{{movie.title}}</a>
-      <em ng-show="movie.release_date" class="small">({{movie.release_date | date : 'yyyy'}})</em>
-      <em ng-hide="movie.release_date" class="small">(Not available)</em>
-    </h4>
-    <p class="movie-overview">{{movie.overview}}</p>
-    <p ng-show="movie.vote_average"><strong>Average rating</strong>: {{movie.vote_average}}</p>
-  </div>
 </div>

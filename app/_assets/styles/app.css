@@ -8,6 +8,11 @@
   cursor: pointer;
 }
 
+.navbar-nav li a {
+ line-height: 25px;
+}
+
+/*Give top-level navigation items a line-height that matches the img height*/
 .navbar-nav > li > a {
  line-height: 45px;
 }
@@ -47,6 +52,13 @@ header .navbar-form {
 
 .text-xl {
   font-size: 1.4em;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  width: 100%;                   
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .movie-metadata li {
