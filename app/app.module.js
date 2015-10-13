@@ -12,6 +12,7 @@
       'ui.bootstrap',
       // app modules
       'components',
+      'filters',
       'app.authentication',
       'app.dashboard',
       'app.header',

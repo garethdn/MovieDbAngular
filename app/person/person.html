@@ -13,13 +13,13 @@
           <div class="person_profile">
             <img ng-if="personCtrl.person.profile_path" class="media-object" width="300" ng-src="{{personCtrl.API_SETTINGS.baseImageUrl}}w300/{{personCtrl.person.profile_path}}" alt="{{personCtrl.person.name}}">
 
-            <img mdb-image-holder="holder.js/300x450/industrial/text:No \n Image" ng-hide="personCtrl.person.profile_path">
+            <img mdb-image-holder="holder.js/300x450/industrial/text:No \n Image" ng-show="!personCtrl.person.profile_path">
             
           </div>
         </div>
         <div class="media-body" style="padding-left:10px;">
-          <span class="text-upper text-bold text-muted text-xl">Biography</span>
-          <p>{{personCtrl.person.biography}}</p>
+          <p class="text-upper text-bold text-xl">Biography</p>
+          <p style="font-size: 1.1em;">{{personCtrl.person.biography}}</p>
         </div>
       </div>
     </div>
@@ -33,9 +33,7 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-4" ng-repeat="movie in personCtrl.person.movie_credits.crew | orderBy:'-release_date'" style="margin-bottom:20px;">
-        <movie-list-item></movie-list-item>
-      </div>
+      <movie-list-item class="col-xs-4 col-sm-3 col-md-2" ng-repeat="movie in personCtrl.person.movie_credits.crew | orderBy:'-release_date' | mdbUnique:'id'"></movie-list-item>
     </div>
   </div>
 
@@ -52,9 +50,7 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-4" ng-repeat="movie in personCtrl.person.movie_credits.cast | filter:actorFilter | orderBy:'-release_date'" style="margin-bottom:20px;">
-        <movie-list-item></movie-list-item>
-      </div>
+      <movie-list-item class="col-xs-6 col-sm-4 col-md-3" ng-repeat="movie in personCtrl.person.movie_credits.cast | filter:actorFilter | orderBy:'-release_date' | mdbUnique:'id'"></movie-list-item>
     </div>
   </div>
 
