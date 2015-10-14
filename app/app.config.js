@@ -5,9 +5,9 @@
     .module('app')
     .config(stateConfig);
 
-  stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+  stateConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
-  function stateConfig($stateProvider, $urlRouterProvider) {
+  function stateConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     // Defer all routing until we fetch the user in the run block in `app.run.js`
     $urlRouterProvider.deferIntercept();
 
@@ -60,6 +60,9 @@
         controller    : 'DashboardController',
         controllerAs  : 'dashCtrl'
       });
+
+      // use the HTML5 History API
+      $locationProvider.html5Mode(true);
       
       // $urlRouterProvider.otherwise('/login');
   }

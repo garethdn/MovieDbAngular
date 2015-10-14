@@ -11,7 +11,6 @@
     var vm = this;
 
     vm.loading      = true;
-    console.log('Loading set to true');
     vm.pageChanged  = pageChanged;
     vm.movies       = [];
     vm.pagination   = {
@@ -99,7 +98,6 @@
 
     function onLoadMoviesSuccess(response) {
       vm.loading      = false;
-      console.log('Loading set to false');
       vm.movies       = response.data.results;
 
       vm.pagination.totalItems   = response.data.total_results;
