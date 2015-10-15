@@ -33,12 +33,10 @@
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
       <div class="row">
         <div class="col-sm-12">
-          <h4 style="margin-top:0">
-            <a ng-href="movies/genre/{{genre.id}}" ng-repeat="genre in movieCtrl.movie.genres">
-              <span class="label label-primary">{{genre.name}}</span>
-            </a>
-          </h4>
-          <hr>
+          <a ng-href="movies/genre/{{genre.id}}" ng-repeat="genre in movieCtrl.movie.genres" style="display:inline-block; margin:0 5px 10px 0;">
+            <h4 class="label label-primary" style="font-size: 100%;">{{genre.name}}</h4>
+          </a>
+          <hr style="margin-top: 10px;">
         </div>
       </div>
       <div class="row">
