@@ -8,79 +8,88 @@
         <em class="small" ng-show="!movieCtrl.movie.release_date && movieCtrl.movie.status">({{movieCtrl.movie.status}})</em>
         <span ng-show="movieCtrl.movie.popularity > 40" class="glyphicon glyphicon-fire popularity-icon pull-right" style="color:orange"></span>
       </h1>
+    </div>
+  </div>
 
-      <div class="media">
-        <div class="pull-left">
-          <div class="movie-poster">
+<!--   <div class="row">
+    <div class="col-sm-12">
+      <span class="visible-xs-block">✔ Visible on xtra small</span>
+      <span class="visible-sm-block">✔ Visible on small</span>
+      <span class="visible-md-block">✔ Visible on medium</span>
+      <span class="visible-lg-block">✔ Visible on large</span>
+    </div>
+  </div> -->
 
-            <img ng-if="movieCtrl.movie.poster_path" class="media-object" width="300" ng-src="{{movieCtrl.API_SETTINGS.baseImageUrl}}w300/{{movieCtrl.movie.poster_path}}" alt="{{movieCtrl.movie.title}}">
+  <div class="row">
 
-            <img mdb-image-holder="holder.js/300x450?theme=sky&text={{movieCtrl.movie.title}}" alt="{{movieCtrl.movie.title}}" ng-if="!movieCtrl.movie.poster_path && movieCtrl.movie.title">
- 
-          </div>
-          
+    <div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
+      <div class="movie-poster">
+        <img ng-if="movieCtrl.movie.poster_path" class="media-object" width="300" ng-src="{{movieCtrl.API_SETTINGS.baseImageUrl}}w300/{{movieCtrl.movie.poster_path}}" alt="{{movieCtrl.movie.title}}">
+
+        <img mdb-image-holder="holder.js/300x450?theme=sky&text={{movieCtrl.movie.title}}" alt="{{movieCtrl.movie.title}}" ng-if="!movieCtrl.movie.poster_path && movieCtrl.movie.title">
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+      <div class="row">
+        <div class="col-sm-12">
+          <h4 style="margin-top:0">
+            <a ng-href="movies/genre/{{genre.id}}" ng-repeat="genre in movieCtrl.movie.genres">
+              <span class="label label-primary">{{genre.name}}</span>
+            </a>
+          </h4>
+          <hr>
         </div>
-        <div class="media-body" style="padding-left:10px;">
-          <div class="row">
-            <div class="col-sm-12">
-              <h4 style="margin-top:0">
-                <a ng-href="movies/genre/{{genre.id}}" ng-repeat="genre in movieCtrl.movie.genres">
-                  <span class="label label-primary">{{genre.name}}</span>
-                </a>
-              </h4>
-              <hr>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-xs-6 col-sm-7">
+          <p ng-show="movieCtrl.movie.tagline" class="text-upper text-bold text-xl">{{movieCtrl.movie.tagline}}</p>
+          <p style="font-size: 1.1em;">{{movieCtrl.movie.overview}}</p>
+        </div>
+        <div class="col-md-4 col-xs-6 col-sm-5">
+          <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 20px;">
+            <p class="text-bold" style="font-size: 6.3em; margin:0;">{{movieCtrl.movie.vote_average | number:1}}</p>
+            <p class="text-upper small" style="margin:0;">From {{movieCtrl.movie.vote_count}} votes</p>
           </div>
-          <div class="row">
-            <div class="col-sm-8">
-              <p class="text-upper text-bold text-xl">{{movieCtrl.movie.tagline}}</p>
-              <p style="font-size: 1.1em;">{{movieCtrl.movie.overview}}</p>
-            </div>
-            <div class="col-sm-4">
-              <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 20px;">
-                <p class="text-bold" style="font-size: 6.3em; margin:0;">{{movieCtrl.movie.vote_average | number:1}}</p>
-                <p class="text-upper small" style="margin:0;">From {{movieCtrl.movie.vote_count}} votes</p>
-              </div>
 
-              <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 15px; border-top: 1px solid white;">
-                <uib-rating ng-show="app.user.id" ng-model="movieCtrl.movie.account_states.rated.value" max="10" ng-change="movieCtrl.ratingChanged()"></uib-rating>
-                <uib-rating ng-hide="app.user.id" readonly=true ng-model="nothing" max="10"></uib-rating>
-              </div>
-            </div>
+          <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 15px; border-top: 1px solid white;">
+            <uib-rating ng-show="app.user.id" ng-model="movieCtrl.movie.account_states.rated.value" max="10" ng-change="movieCtrl.ratingChanged()"></uib-rating>
+            <uib-rating ng-hide="app.user.id" readonly=true ng-model="nothing" max="10"></uib-rating>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <hr>
           <div class="row">
-            <div class="col-sm-12">
-              <hr>
-              <div class="row">
-                <div class="col-sm-4">
-                  <p class="text-upper">Directed by</p>
-                  <p ng-repeat="director in movieCtrl.movie.directors">
-                    <a ng-href="person/{{director.id}}">{{director.name}}</a>
-                  </p>
-                  <p ng-hide="movieCtrl.movie.directors.length" class="text-muted">Not available</p>
-                </div>
-                <div class="col-sm-4">
-                  <p class="text-upper">Written by</p>
-                  <p ng-repeat="writer in movieCtrl.movie.writers">
-                    <a ng-href="person/{{writer.id}}">{{writer.name}} <em>({{writer.job}})</em></a>
-                  </p>
-                  <p ng-hide="movieCtrl.movie.writers.length" class="text-muted">Not available</p>
-                </div>
-                <div class="col-sm-4">
-                  <button ng-hide="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-success">Add to Watchlist</button>
-                  <button ng-show="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-warning">Remove from Watchlist</button>
+            <div class="col-xs-6 col-sm-3 col-md-4">
+              <p class="text-upper">Directed by</p>
+              <p ng-repeat="director in movieCtrl.movie.directors">
+                <a ng-href="person/{{director.id}}">{{director.name}}</a>
+              </p>
+              <p ng-hide="movieCtrl.movie.directors.length" class="text-muted">Not available</p>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-4">
+              <p class="text-upper">Written by</p>
+              <p ng-repeat="writer in movieCtrl.movie.writers">
+                <a ng-href="person/{{writer.id}}">{{writer.name}} <em>({{writer.job}})</em></a>
+              </p>
+              <p ng-hide="movieCtrl.movie.writers.length" class="text-muted">Not available</p>
+            </div>
+            <div class="col-sm-5 col-md-4">
+              <button ng-hide="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-success">Add to Watchlist</button>
+              <button ng-show="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-warning">Remove from Watchlist</button>
 
-                  <button ng-hide="movieCtrl.movie.account_states.favorite" ng-click="movieCtrl.toggleFavorite()" class="btn btn-block btn-lg btn-success">Add to Favorites</button>
-                  <button ng-show="movieCtrl.movie.account_states.favorite" ng-click="movieCtrl.toggleFavorite()" class="btn btn-block btn-lg btn-warning">Remove from Favorites</button>
+              <button ng-hide="movieCtrl.movie.account_states.favorite" ng-click="movieCtrl.toggleFavorite()" class="btn btn-block btn-lg btn-success">Add to Favorites</button>
+              <button ng-show="movieCtrl.movie.account_states.favorite" ng-click="movieCtrl.toggleFavorite()" class="btn btn-block btn-lg btn-warning">Remove from Favorites</button>
 
-                  <button ng-click="movieCtrl.playTrailer()" ng-show="movieCtrl.getTrailer()" class="btn btn-block btn-lg btn-info">Watch Trailer</button>
-                </div>
-              </div>
+              <button ng-click="movieCtrl.playTrailer()" ng-show="movieCtrl.getTrailer()" class="btn btn-block btn-lg btn-info">Watch Trailer</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+     
   </div>
   <div class="row">
     <div class="col-sm-12">

@@ -5,6 +5,7 @@ var app = express();
 app.use('/', express.static('app'));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
+app.use('/dist', express.static(__dirname + '/dist'));
 
 app.get('/*', function(req, res, next) {
   res.sendFile('index.html', { root: __dirname + '/app' });

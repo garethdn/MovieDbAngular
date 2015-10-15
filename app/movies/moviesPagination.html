@@ -1,1 +1,5 @@
-<uib-pagination ng-if="moviesCtrl.pagination.totalItems" boundary-links="true" items-per-page="moviesCtrl.pagination.itemsPerPage" ng-change="moviesCtrl.pageChanged()" total-items="moviesCtrl.pagination.totalItems" max-size="moviesCtrl.pagination.maxSize" ng-model="moviesCtrl.pagination.currentPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+<uib-pagination class="hidden-xs" ng-if="moviesCtrl.pagination.totalItems" boundary-links="true" items-per-page="moviesCtrl.pagination.itemsPerPage" ng-change="moviesCtrl.pageChanged()" total-items="moviesCtrl.pagination.totalItems" max-size="moviesCtrl.pagination.maxSize" ng-model="moviesCtrl.pagination.currentPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+
+<div class="visible-xs text-center">
+  <uib-pagination class="pagination-sm" ng-if="moviesCtrl.pagination.totalItems" boundary-links="true" items-per-page="moviesCtrl.pagination.itemsPerPage" ng-change="moviesCtrl.pageChanged()" total-items="moviesCtrl.pagination.totalItems" max-size="moviesCtrl.pagination.maxSize" ng-model="moviesCtrl.pagination.currentPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+</div>

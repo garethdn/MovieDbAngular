@@ -8,6 +8,12 @@
   cursor: pointer;
 }
 
+@media (min-width: 768px) and (max-width: 992px) {
+  .container {
+    width: 100%;
+  }
+}
+
 .navbar-nav li a {
  line-height: 25px;
 }
@@ -29,14 +35,16 @@ button {
   font-size: 1em;
 }
 
-header .navbar {
-  margin-bottom: 0;
-  border-radius: 0 !important;
-}
+header {
+  .navbar {
+    margin-bottom: 0;
+    border-radius: 0 !important;
+  }
 
-header .navbar-form {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  .navbar-form {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 .text-upper {
@@ -60,21 +68,4 @@ header .navbar-form {
   width: 100%;                   
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.movie-metadata li {
-  margin-bottom: 5px;
-}
-
-.movie-metadata .list-key {
-  font-weight: bold;
-}
-
-.movie-actions {
-  font-size: 40px;
-  margin-top: 10px;
-}
-
-.is-rated {
-  color: gold;
 }

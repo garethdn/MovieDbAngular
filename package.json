@@ -7,12 +7,16 @@
   "license": "MIT",
   "scripts": {
     "prestart": "npm install",
-    "postinstall": "bower install",
+    "postinstall": "bower install && gulp build",
     "start": "node web.js"
   },
   "dependencies": {
     "angular-ui-router": "^0.2.15",
     "bower": "^1.5.3",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.0.4",
+    "merge-stream": "^1.0.0"
   }
 }

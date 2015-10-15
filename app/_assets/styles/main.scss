@@ -1,0 +1,17 @@
+// Vendor sass
+@import '../../../bower_components/bootswatch/superhero/_variables.scss';
+@import '../../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+@import '../../../bower_components/bootswatch/superhero/_bootswatch.scss';
+@import '../../../bower_components/font-awesome/scss/font-awesome.scss';
+
+// Components
+@import '../../components/loading/loading.directive.scss';
+@import '../../components/multiSearch/multiSearch.directive.scss';
+@import '../../components/backdrop/backdrop.directive.scss';
+@import '../../components/showcaseItem/showcaseItem.directive.scss';
+
+@import 'app.scss';
+@import 'animations.scss';
+@import '../../movie/movie.scss';
+@import '../../dashboard/dashboard.scss';
+@import '../../person/person.scss';

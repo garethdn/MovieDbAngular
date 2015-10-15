@@ -1,0 +1,17 @@
+.fader {
+  -webkit-transition:all ease-out 1.2s;
+  transition:all ease-out 1.2s;
+
+  &.fader-fast {
+    -webkit-transition:all linear 0.3s;
+    transition:all linear 0.3s;
+  }
+
+  &.ng-hide {
+    opacity:0;
+  }
+
+  &.ng-show {
+    opacity:1;
+  }
+}
