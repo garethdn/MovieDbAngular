@@ -9,21 +9,21 @@
 }
 
 /* As the screen size gets smaller increase backdrop size and center */
-@media (max-width: 992px) {
+@media (max-width: $screen-sm-max) {
   .backdrop-container .backdrop-image {
     width: 180%;
     margin-left: -40%;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: $screen-xs-max) {
   .backdrop-container .backdrop-image {
     width: 220%;
     margin-left: -60%;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: $screen-xxs-max) {
   .backdrop-container .backdrop-image {
     width: 300%;
     margin-left: -100%;

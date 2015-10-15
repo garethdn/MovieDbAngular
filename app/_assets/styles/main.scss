@@ -4,6 +4,8 @@
 @import '../../../bower_components/bootswatch/superhero/_bootswatch.scss';
 @import '../../../bower_components/font-awesome/scss/font-awesome.scss';
 
+@import 'xxs-breakpoint.scss';
+
 // Components
 @import '../../components/loading/loading.directive.scss';
 @import '../../components/multiSearch/multiSearch.directive.scss';
@@ -15,3 +17,4 @@
 @import '../../movie/movie.scss';
 @import '../../dashboard/dashboard.scss';
 @import '../../person/person.scss';
+

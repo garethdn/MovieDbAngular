@@ -24,24 +24,6 @@
       </p>
     </div>
 
-    <!-- <div class="col-sm-12">
-      <div class="media">
-        <div class="pull-left">
-          <div class="person-profile">
-            <img ng-if="personCtrl.person.profile_path" class="media-object" width="300" ng-src="{{personCtrl.API_SETTINGS.baseImageUrl}}w300/{{personCtrl.person.profile_path}}" alt="{{personCtrl.person.name}}">
-
-            <img mdb-image-holder="holder.js/300x450?theme=sky&text={{personCtrl.person.name}}" ng-show="!personCtrl.person.profile_path">
-            
-          </div>
-        </div>
-        <div class="media-body" style="padding-left:10px;">
-          <p class="text-upper text-bold text-xl">Biography</p>
-          <p style="font-size: 1.1em;">
-            {{personCtrl.person.biography | limitTo:1000}}{{personCtrl.person.biography.length > 1000 ? '...' : ''}}
-          </p>
-        </div>
-      </div>
-    </div> -->
   </div>
 
   <div ng-show="personCtrl.person.movie_credits.crew.length">

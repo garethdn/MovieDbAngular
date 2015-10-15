@@ -9,7 +9,8 @@ var merge = require('merge-stream');
 gulp.task('sass', function () {
   return gulp.src('app/_assets/styles/main.scss')
     .pipe(sass({
-      outputStyle: 'compressed'
+      //outputStyle: 'compressed',
+      sourceComments : 'normal'
     })
     .on('error', sass.logError))
     .pipe(concat('main.css'))
