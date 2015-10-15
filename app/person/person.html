@@ -8,7 +8,7 @@
   </div>
   <div class="row">
 
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <div class="hidden-xxs col-xs-3 col-sm-3 col-md-3 col-lg-3">
       <div class="person-profile">
         <img ng-if="personCtrl.person.profile_path" class="media-object" width="300" ng-src="{{personCtrl.API_SETTINGS.baseImageUrl}}w300/{{personCtrl.person.profile_path}}" alt="{{personCtrl.person.name}}">
 
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+    <div class="col-xxs-12 col-xs-9 col-sm-9 col-md-9 col-lg-9">
       <p class="text-upper text-bold text-xl">Biography</p>
       <p style="font-size: 1.1em;">
         {{personCtrl.person.biography | limitTo:1000}}{{personCtrl.person.biography.length > 1000 ? '...' : ''}}

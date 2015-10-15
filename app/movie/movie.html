@@ -26,7 +26,7 @@
       <div class="movie-poster">
         <img ng-if="movieCtrl.movie.poster_path" class="media-object" width="300" ng-src="{{movieCtrl.API_SETTINGS.baseImageUrl}}w300/{{movieCtrl.movie.poster_path}}" alt="{{movieCtrl.movie.title}}">
 
-        <img mdb-image-holder="holder.js/300x450?theme=sky&text={{movieCtrl.movie.title}}" alt="{{movieCtrl.movie.title}}" ng-if="!movieCtrl.movie.poster_path && movieCtrl.movie.title">
+        <img mdb-image-holder="holder.js/300x450?auto=yes&theme=sky&text={{movieCtrl.movie.title}}" alt="{{movieCtrl.movie.title}}" ng-if="!movieCtrl.movie.poster_path && movieCtrl.movie.title">
       </div>
     </div>
 
