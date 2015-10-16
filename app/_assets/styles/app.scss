@@ -44,6 +44,13 @@ header {
   .navbar-form {
     padding-top: 10px;
     padding-bottom: 10px;
+
+    @media (min-width: $screen-sm-min) {
+      .form-control {
+        width: 230px;
+      }
+    }
+
   }
 }
 
