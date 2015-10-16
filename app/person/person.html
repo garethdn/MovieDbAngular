@@ -28,32 +28,62 @@
   </div>
 
   <div ng-show="personCtrl.person.movie_credits.crew.length">
-    <div class="row" style="margin-top:20px">
-      <div class="col-sm-12">
-        <h3 class="text-upper">Crew</h3>
+    <div class="row" style="margin-top:30px">
+      <div class="col-xxs-12 col-xs-3 col-sm-4">
+        <h3 class="text-upper" style="margin-top:0">Crew</h3>
+      </div>
+      <div class="col-xxs-12 col-xs-9 col-sm-8">
+        <form class="form-inline form-movie-filter">
+          <div class="form-group">
+            <select 
+              placeholder="Job"
+              name="role" 
+              class="form-control input-sm" 
+              ng-model="crewFilter.job"
+              ng-options="item as item for item in personCtrl.getCrewRoles(personCtrl.person.movie_credits.crew)">
+              <option value="" ng-if="!crewFilter.job">Role</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select 
+              placeholder="Year"
+              name="release-year" 
+              class="form-control input-sm" 
+              ng-model="crewFilter.release_date"
+              ng-options="item as item for item in personCtrl.getMovieDecades(personCtrl.person.movie_credits.crew)">
+              <option value="" ng-if="!crewFilter.release_date">Year</option>
+            </select>
+          </div>
+          <div class="form-group">            
+            <input type="text" ng-model="crewFilter.title" class="input-sm" placeholder="Filter by name">
+          </div>
+          <div class="form-group">            
+            <button class="btn btn-sm btn-info" ng-click="crewFilter={}">Clear</button>
+          </div>
+        </form>
       </div>
     </div>
-    <hr>
+    <hr style="margin-top:0">
     <div class="row">
-      <movie-list-item class="col-xs-4 col-sm-3 col-md-2" ng-repeat="movie in personCtrl.person.movie_credits.crew | orderBy:'-release_date' | mdbUnique:'id'"></movie-list-item>
+      <movie-list-item class="col-xs-4 col-sm-3 col-md-2" ng-repeat="movie in personCtrl.person.movie_credits.crew | filter:crewFilter | orderBy:'-release_date' | mdbUnique:'id'"></movie-list-item>
     </div>
   </div>
 
   <div ng-show="personCtrl.person.movie_credits.cast.length">
-    <div class="row" style="margin-top:20px">
-      <div class="col-xs-3 col-sm-4">
-        <h3 class="text-upper">Acting Roles</h3>
+    <div class="row" style="margin-top:30px">
+      <div class="col-xxs-12 col-xs-3 col-sm-4">
+        <h3 class="text-upper" style="margin-top:0">Acting Roles</h3>
       </div>
-      <div class="col-xs-9 col-sm-8 text-right">
-        <form class="form-inline">
+      <div class="col-xxs-12 col-xs-9 col-sm-8">
+        <form class="form-inline form-movie-filter">
           <div class="form-group">
             <select 
-              placeholder="Select a year"
+              placeholder="Year"
               name="release-year" 
               class="form-control input-sm" 
               ng-model="actorFilter.release_date"
               ng-options="item as item for item in personCtrl.getMovieDecades(personCtrl.person.movie_credits.cast)">
-              <option value="" ng-if="!actorFilter.release_date">Filter by year</option>
+              <option value="" ng-if="!actorFilter.release_date">Year</option>
             </select>
           </div>
           <div class="form-group">            
@@ -65,7 +95,7 @@
         </form>
       </div>
     </div>
-    <hr>
+    <hr style="margin-top:0">
 
     <div class="row">
       <movie-list-item class="col-xs-6 col-sm-4 col-md-3" ng-repeat="movie in personCtrl.person.movie_credits.cast | filter:actorFilter | orderBy:'-release_date' | mdbUnique:'id'"></movie-list-item>

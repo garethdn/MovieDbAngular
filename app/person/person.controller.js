@@ -14,6 +14,7 @@
     vm.API_SETTINGS = API_SETTINGS;
     vm.person = {};
     vm.getMovieDecades = getMovieDecades;
+    vm.getCrewRoles = getCrewRoles;
 
     activate();
 
@@ -39,6 +40,14 @@
       });
 
       return _.chain(release_years).uniq().sort().reverse().value();
+    }
+
+    function getCrewRoles(movies) {
+      return _.chain(movies)
+        .pluck('job')
+        .compact()
+        .uniq()
+        .value();
     }
   }
 

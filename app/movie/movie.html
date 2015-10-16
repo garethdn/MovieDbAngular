@@ -42,7 +42,8 @@
       <div class="row">
         <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12">
           <p ng-show="movieCtrl.movie.tagline" class="text-upper text-bold text-xl">{{movieCtrl.movie.tagline}}</p>
-          <p style="font-size: 1.1em;">{{movieCtrl.movie.overview}}</p>
+          <p ng-show="movieCtrl.movie.overview" style="font-size: 1.1em;">{{movieCtrl.movie.overview}}</p>
+          <em ng-hide="movieCtrl.movie.overview">No movie synopsis available</em>
         </div>
         <div class="col-md-4 col-xs-6 col-sm-5 col-xxs-12">
           <div class="text-center" style="background-color: rgba(223, 105, 26, 0.6); padding: 20px;">
@@ -74,7 +75,7 @@
               </p>
               <p ng-hide="movieCtrl.movie.writers.length" class="text-muted">Not available</p>
             </div>
-            <div class="col-sm-5 col-md-4">
+            <div class="col-xs-12 col-sm-5 col-md-4">
               <button ng-hide="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-success"><i class="fa fa-plus"></i> My Watchlist</button>
               <button ng-show="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-warning"><i class="fa fa-minus"></i> My Watchlist</button>
 

@@ -8,6 +8,13 @@
   cursor: pointer;
 }
 
+button, a {
+  
+  .fa {
+    padding: 0 5px;
+  }
+}
+
 @media (min-width: 768px) and (max-width: 992px) {
   .container {
     width: 100%;
@@ -18,7 +25,7 @@
  line-height: 25px;
 }
 
-/*Give top-level navigation items a line-height that matches the img height*/
+/* Give top-level navigation items a line-height that matches the img height */
 .navbar-nav > li > a {
  line-height: 45px;
 }
