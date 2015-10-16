@@ -7,3 +7,4 @@ tmp
 .idea
 npm-debug.log
 dist/
+private.js

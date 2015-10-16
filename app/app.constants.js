@@ -1,6 +1,8 @@
 (function(){
   'use strict';
 
+  /* global Holder:false, _:false */
+
   // John Papa [Style Y240] Create an Angular Constant for vendor libraries' global variables.
   angular
     .module('app')
@@ -90,8 +92,7 @@
       }
     ])
     .constant('API_SETTINGS', {
-      key           : '05fa93373002b486f99f4b5b15197746',
-      url           : 'https://api.themoviedb.org/3',
+      url           : 'api/v3',
       baseImageUrl  : 'https://image.tmdb.org/t/p/'
     })
     .constant('PAGINATION_SETTINGS', {

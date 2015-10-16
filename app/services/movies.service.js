@@ -26,7 +26,6 @@
 
       return $http.get(url, { 
         params: { 
-          'api_key'             : API_SETTINGS.key,
           'append_to_response'  : 'credits,trailers,similar,account_states,lists',
           // `session_id` is required for `account_states` which will include favorite, 
           // watchlist and rating information in the response. If `session_id` is undefined
@@ -112,7 +111,7 @@
     }
 
     function toggleFavorite(options) {
-      var url = API_SETTINGS.url + '/account/' + authenticationService.user.id + '/favorite?api_key=' + API_SETTINGS.key + '&session_id=' + authenticationService.getSessionId();
+      var url = API_SETTINGS.url + '/account/' + authenticationService.user.id + '/favorite?session_id=' + authenticationService.getSessionId();
 
       // Doing it this way because `$http.post` will not generate a query string even if a params object is provided
       return $http({
@@ -127,7 +126,7 @@
     }
 
     function toggleWatchlist(options) {
-      var url = API_SETTINGS.url + '/account/' + authenticationService.user.id + '/watchlist?api_key=' + API_SETTINGS.key + '&session_id=' + authenticationService.getSessionId();
+      var url = API_SETTINGS.url + '/account/' + authenticationService.user.id + '/watchlist?session_id=' + authenticationService.getSessionId();
 
       return $http({
         method: 'POST',
@@ -146,7 +145,7 @@
 
     // Performs a POST or DELETE depending on whether a rating value is passed to the method
     function rate(options) {
-      var url = API_SETTINGS.url + '/movie/' + options.id + '/rating?api_key=' + API_SETTINGS.key + '&session_id=' + authenticationService.getSessionId();
+      var url = API_SETTINGS.url + '/movie/' + options.id + '/rating?session_id=' + authenticationService.getSessionId();
 
       return $http({
         method: options.rating ? 'POST' : 'DELETE',
@@ -163,7 +162,6 @@
 
       return $http.get(url, { 
         params: { 
-          'api_key' : API_SETTINGS.key,
           'query'   : query
         }})
         .success(onMovieCollectionSuccess)
@@ -173,7 +171,7 @@
     function getMovieCollection(url, params) {
       return $http.get(url, { 
         params: angular.extend({}, { 
-          'api_key'   : API_SETTINGS.key
+          // 'api_key'   : API_SETTINGS.key
         }, params)})
         .success(onMovieCollectionSuccess)
         .error(onMovieCollectionError);

@@ -27,7 +27,6 @@
       scope.API_SETTINGS = API_SETTINGS;
 
       img.on('load', function(){
-        $log.log('image loaded');
         scope.$apply(function(){
           scope.loaded = true;
         });

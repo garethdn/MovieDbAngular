@@ -2,6 +2,7 @@
   width: 100%;
   overflow: hidden;
   position: absolute;
+  z-index: -1;
 }
 
 .backdrop-container .backdrop-image {

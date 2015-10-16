@@ -1,4 +1,6 @@
 (function(){
+  'use strict';
+  
   angular
     .module('app.person')
     .factory('personService', personService);
@@ -15,7 +17,6 @@
 
       return $http.get(url, {
         params: {
-          api_key             : API_SETTINGS.key,
           append_to_response  : 'movie_credits,tagged_images'
         }
       });
