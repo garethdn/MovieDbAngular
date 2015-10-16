@@ -26,7 +26,7 @@
 
       return $http.get(url, { 
         params: { 
-          'append_to_response'  : 'credits,trailers,similar,account_states,lists',
+          'append_to_response'  : 'credits,trailers,similar,account_states,lists,releases',
           // `session_id` is required for `account_states` which will include favorite, 
           // watchlist and rating information in the response. If `session_id` is undefined
           // the request will complete regardless, just withtout the `account_states`

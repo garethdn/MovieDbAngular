@@ -75,13 +75,13 @@
               <p ng-hide="movieCtrl.movie.writers.length" class="text-muted">Not available</p>
             </div>
             <div class="col-sm-5 col-md-4">
-              <button ng-hide="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-success">Add to Watchlist</button>
-              <button ng-show="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-warning">Remove from Watchlist</button>
+              <button ng-hide="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-success"><i class="fa fa-plus"></i> My Watchlist</button>
+              <button ng-show="movieCtrl.movie.account_states.watchlist" ng-click="movieCtrl.toggleWatchlist()" class="btn btn-block btn-lg btn-warning"><i class="fa fa-minus"></i> My Watchlist</button>
 
-              <button ng-hide="movieCtrl.movie.account_states.favorite" ng-click="movieCtrl.toggleFavorite()" class="btn btn-block btn-lg btn-success">Add to Favorites</button>
-              <button ng-show="movieCtrl.movie.account_states.favorite" ng-click="movieCtrl.toggleFavorite()" class="btn btn-block btn-lg btn-warning">Remove from Favorites</button>
+              <button ng-hide="movieCtrl.movie.account_states.favorite" ng-click="movieCtrl.toggleFavorite()" class="btn btn-block btn-lg btn-success"><i class="fa fa-plus"></i> My Favorites</button>
+              <button ng-show="movieCtrl.movie.account_states.favorite" ng-click="movieCtrl.toggleFavorite()" class="btn btn-block btn-lg btn-warning"><i class="fa fa-minus"></i> My Favorites</button>
 
-              <button ng-click="movieCtrl.playTrailer()" ng-show="movieCtrl.getTrailer()" class="btn btn-block btn-lg btn-info">Watch Trailer</button>
+              <button ng-click="movieCtrl.playTrailer()" ng-show="movieCtrl.getTrailer()" class="btn btn-block btn-lg btn-info"><i class="fa fa-video-camera"></i> Watch Trailer</button>
             </div>
           </div>
         </div>

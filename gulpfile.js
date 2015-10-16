@@ -26,7 +26,7 @@ gulp.task('copy', function () {
     .src('app/_assets/images/*')
     .pipe(gulp.dest('dist/_assets/images'));
 
-  var fonts = gulp.src('bower_components/bootstrap-sass/assets/fonts/*/*')
+  var fonts = gulp.src(['bower_components/bootstrap-sass/assets/fonts/*/*', 'bower_components/font-awesome/fonts/*'])
     .pipe(gulp.dest('dist/_assets/fonts'));
 
   return merge(images, fonts);
