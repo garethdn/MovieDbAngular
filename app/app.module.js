@@ -18,7 +18,8 @@
       'app.header',
       'app.movie',
       'app.movies',
-      'app.person'
+      'app.person',
+      'app.torrents'
     ]);
 
 })();

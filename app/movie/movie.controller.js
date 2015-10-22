@@ -18,12 +18,14 @@
     vm.ratingChanged    = ratingChanged;
     vm.getTrailer       = getTrailer;
     vm.playTrailer      = playTrailer;
+    vm.torrentsLoading  = false;
+    vm.playTorrent      = playTorrent;
 
     // John Papa [Style Y080] Resolve start-up logic for a controller in an `activate` function.
     activate();
 
     function activate() {
-      getMovie();
+      getMovie().then(getTorrentInfo);
       watchUser();
     }
 
@@ -108,6 +110,26 @@
         }
         getMovie();
       });
+    }
+
+    function getTorrentInfo() {
+      if (!vm.movie.imdb_id) {
+        return;
+      }
+
+      vm.torrentsLoading = true;
+
+      return moviesService.getTorrentInfo(vm.movie).then(function(response){
+        vm.movie.torrents = response.data.data.movies.length ? response.data.data.movies[0].torrents : [];
+        vm.torrentsLoading = false;
+      }, function(){
+        vm.torrentsLoading = false;
+        vm.movie.torrentsError = true;
+      });
+    }
+
+    function playTorrent(torrent) {
+      vm.torrentUrl = 'play-torrent/' + torrent.hash;
     }
 
   }

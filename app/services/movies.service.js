@@ -5,9 +5,9 @@
     .module('app.movies')
     .factory('moviesService', moviesService);
 
-  moviesService.$inject = ['$http', '_', 'API_SETTINGS', 'authenticationService'];
+  moviesService.$inject = ['$http', '_', 'API_SETTINGS', 'authenticationService', '$q'];
 
-  function moviesService($http, _, API_SETTINGS, authenticationService) {
+  function moviesService($http, _, API_SETTINGS, authenticationService, $q) {
     var factory = {
       getMovie              : getMovie,
       getMovies             : getMovies,
@@ -18,7 +18,8 @@
       toggleFavorite        : toggleFavorite,
       toggleWatchlist       : toggleWatchlist,
       rate                  : rate,
-      multiSearch           : multiSearch
+      multiSearch           : multiSearch,
+      getTorrentInfo        : getTorrentInfo
     };
 
     function getMovie(options){
@@ -185,6 +186,30 @@
     function onMovieCollectionError(error) {
       return error;
     }
+
+    function getTorrentInfo(movie) {
+      var url = 'https://yts.to/api/v2/list_movies.json';
+
+      return $http.get(url, { 
+        cache: true,
+        params: {
+          query_term: movie.imdb_id
+        }})
+        .then(function(data){
+          _.each(data.data.movies, function(movie){
+            _.each(movie.torrents, function(torrent){
+              torrent.magnet_link = generateMagnetLink(movie.title_long, torrent.hash);
+            }, this);
+          }, this);
+        }, function(error){
+          return $q.reject(error);
+        });
+    }
+
+    function generateMagnetLink(movieTitle, hash) {
+      return 'magnet:?xt=urn:btih:' + hash;
+    }
+
 
     return factory;
   }

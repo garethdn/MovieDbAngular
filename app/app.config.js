@@ -3,9 +3,11 @@
   // John Papa [Style Y128] Configuration
   angular
     .module('app')
-    .config(stateConfig);
+    .config(stateConfig)
+    .config(magnetLinks);
 
   stateConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+  magnetLinks.$inject = ['$compileProvider'];
 
   function stateConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     // Defer all routing until we fetch the user in the run block in `app.run.js`
@@ -63,8 +65,10 @@
 
       // use the HTML5 History API
       $locationProvider.html5Mode(true);
-      
-      // $urlRouterProvider.otherwise('/login');
+  }
+
+  function magnetLinks($compileProvider) {
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|magnet):/);
   }
 
 })();

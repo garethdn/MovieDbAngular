@@ -1,6 +1,6 @@
 <mdb-backdrop path="movieCtrl.movie.backdrop_path" ng-if="movieCtrl.movie.backdrop_path"></mdb-backdrop>
 
-<div class="container" mdb-loading loading="movieCtrl.loading">
+<div class="container" mdb-loading loading="movieCtrl.loading" id="movie-container">
   <div class="row">
     <div class="col-sm-12">
       <h1 class="page-header">{{movieCtrl.movie.title}} 
@@ -36,9 +36,41 @@
           <a ng-href="movies/genre/{{genre.id}}" ng-repeat="genre in movieCtrl.movie.genres" style="display:inline-block; margin:0 5px 10px 0;">
             <h4 class="label label-primary" style="font-size: 100%;">{{genre.name}}</h4>
           </a>
+          <hr style="margin: 10px 0;">
+        </div>
+      </div>
+
+      <!-- torrents -->
+      <div class="row">
+        <div class="col-sm-12">
+          <p ng-show="movieCtrl.torrentsLoading"><i class="fa fa-spin fa-spinner"></i> Torrent information loading...</p>
+
+          <em ng-hide="movieCtrl.movie.torrentsError || movieCtrl.movie.torrents.length > 0 || movieCtrl.torrentsLoading">No torrents available</em>
+
+          <em ng-show="movieCtrl.movie.torrentsError">Something went wrong - we couldn't retrieve torrent information for this movie</em>
+
+          <div class="torrent-details" ng-repeat="torrent in movieCtrl.movie.torrents">
+            <a ng-href="{{torrent.magnet_link}}"><i class="fa fa-magnet fa-rotate-180"></i> {{torrent.quality}} </a><i class="fa fa-play" ng-click="movieCtrl.playTorrent(torrent)"></i>
+          </div>
           <hr style="margin-top: 10px;">
         </div>
       </div>
+      <!-- end -->
+
+      <div class="row" ng-if="movieCtrl.torrentUrl">
+        <div class="col-sm-12">
+          <video controls preload="none" poster="{{app.API_SETTINGS.baseImageUrl}}w1920{{movieCtrl.movie.backdrop_path}}" style="width:100%">
+            <source ng-src="{{movieCtrl.torrentUrl}}" type="video/mp4"/>
+          </video>
+        </div>
+      </div>
+
+<!--       <div class="row">
+        <div class="col-sm-12">
+          <mdb-torrent-video source="'play-test/file.mp4'" type="video/mp4" poster="movieCtrl.movie.backdrop_path"></mdb-torrent-video>
+        </div>
+      </div> -->
+
       <div class="row">
         <div class="col-md-8 col-xs-6 col-sm-7 col-xxs-12">
           <p ng-show="movieCtrl.movie.tagline" class="text-upper text-bold text-xl">{{movieCtrl.movie.tagline}}</p>
