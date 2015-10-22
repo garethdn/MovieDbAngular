@@ -4,7 +4,6 @@
 
   var torrentStream = require('torrent-stream');
   var _ = require('lodash');
-  var prettyjson = require('prettyjson');
 
   module.exports = {
     getTorrentStream: getTorrentStream,
@@ -32,7 +31,6 @@
 
       torrentStreams[hash] = {
         engine: torrentStream(hash, {
-          // uploads: 5,
           trackers: getTrackers()
         })
       };
@@ -65,7 +63,6 @@
     }
 
     var end = parseInt(getByteRangeEnd(start, positions[1], total), 10);
-    // var end = positions[1] ? parseInt(positions[1], 10) : (start + maxBuffer) > (total - 1) ? (total - 1) : (start + maxBuffer);
     var chunksize = (end - start) + 1;
 
     return {
