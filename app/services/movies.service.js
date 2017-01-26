@@ -196,7 +196,7 @@
           query_term: movie.imdb_id
         }})
         .then(function(data){
-          _.each(data.data.movies, function(movie){
+          _.each(data.data.data.movies, function(movie){
             _.each(movie.torrents, function(torrent){
               torrent.magnet_link = generateMagnetLink(movie.title_long, torrent.hash);
             }, this);
