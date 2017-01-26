@@ -188,7 +188,7 @@
     }
 
     function getTorrentInfo(movie) {
-      var url = 'https://yts.to/api/v2/list_movies.json';
+      var url = 'https://yts.ag/api/v2/list_movies.json';
 
       return $http.get(url, { 
         cache: true,
