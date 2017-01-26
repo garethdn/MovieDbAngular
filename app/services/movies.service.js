@@ -200,6 +200,7 @@
             _.each(movie.torrents, function(torrent){
               torrent.magnet_link = generateMagnetLink(movie.title_long, torrent.hash);
             }, this);
+            $q.resolve(data.data);
           }, this);
         }, function(error){
           return $q.reject(error);
